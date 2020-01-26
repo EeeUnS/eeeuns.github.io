@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "test setting"
+title:  "test"
 date:   2020-01-26 22:53:01 +0900
 ---
 물체가 A구간에 진입하기전 바닥에서의 속도를 $v$라 합시다.
@@ -16,3 +16,4 @@ date:   2020-01-26 22:53:01 +0900
 https://jetalog.net/86
 
 https://jetalog.net/87?category=808871
+
