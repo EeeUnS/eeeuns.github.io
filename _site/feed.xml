@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-01-26T23:04:50+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">EUnS’s blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">test</title><link href="http://localhost:4000/2020/01/26/a.html" rel="alternate" type="text/html" title="test" /><published>2020-01-26T22:53:01+09:00</published><updated>2020-01-26T22:53:01+09:00</updated><id>http://localhost:4000/2020/01/26/a</id><content type="html" xml:base="http://localhost:4000/2020/01/26/a.html">&lt;p&gt;물체가 A구간에 진입하기전 바닥에서의 속도를 $v$라 합시다.&lt;/p&gt;
+
+&lt;p&gt;물체가 B구간을 지난후 $h$만큼 올라갔을때 속력이 0&lt;/p&gt;
+
+&lt;p&gt;이 되었으므로 A구간전의 물체의 높이를 $h$만큼 올린것과 같습니다. 다시 말해서 B구간을 지난 직후의 물체의 속력은 $v$입니다. A구간과 B구간의 공통점은 충격량이 같다는건데 이는 구간을 지난후의 속도 상승량이 같습니다. 이 속도 상승량을 $\Delta v$라고 합시다. 그러면 A구간을 지난 직후의 물체의 속력은 $v+\Delta v$이고 B구간을 지나기 직전의 속력은 $v-\Delta v$입니다.&lt;/p&gt;
+
+&lt;p&gt;​&lt;/p&gt;
+
+&lt;p&gt;참고자료&lt;/p&gt;
+
+&lt;p&gt;https://jetalog.net/86&lt;/p&gt;
+
+&lt;p&gt;https://jetalog.net/87?category=808871&lt;/p&gt;</content><author><name></name></author><summary type="html">물체가 A구간에 진입하기전 바닥에서의 속도를 $v$라 합시다.</summary></entry><entry><title type="html">c++11 random seed test</title><link href="http://localhost:4000/c++/2020/01/07/c++11-random-seed-test.html" rel="alternate" type="text/html" title="c++11 random seed test" /><published>2020-01-07T22:53:01+09:00</published><updated>2020-01-07T22:53:01+09:00</updated><id>http://localhost:4000/c++/2020/01/07/c++11-random-seed-test</id><content type="html" xml:base="http://localhost:4000/c++/2020/01/07/c++11-random-seed-test.html">&lt;h1 id=&quot;시드-세팅에-따른-성능-비교&quot;&gt;시드 세팅에 따른 성능 비교&lt;/h1&gt;
+
+&lt;p&gt;quick sort 성능 테스트 중 랜덤 피봇에대한 성능 저하가 심각했었는데 시드를 매 반복마다 초기화할때 얼마나 느려지는지에 대해서 실제 테스트를 했었던 수치이다.&lt;/p&gt;
+
+&lt;h2 id=&quot;1-고정-인덱스&quot;&gt;1. 고정 인덱스&lt;/h2&gt;
+
+&lt;p&gt;퀵소트 테스트 돌리는데 피봇으로 고정 인덱스 박아넣으면
+소팅하는 정렬상태는 비중복 값으로 완전랜덤으로 섞여있음&lt;/p&gt;
+
+&lt;h2 id=&quot;n--10000000&quot;&gt;n = 10000000&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt; &lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Hoare’s&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;lomuto’s&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1회&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.748&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.838&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2회&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.711&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.753&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3회&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.716&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.757&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4회&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.722&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.762&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5회&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.712&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.763&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6회&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.725&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.754&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7회&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.722&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.768&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8회&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.709&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.746&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9회&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.732&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.743&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10회&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.727&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.738&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;2-여기서-매-파티션마다-시드값을-새로-줄경우에&quot;&gt;2. 여기서 매 파티션마다 시드값을 새로 줄경우에&lt;/h2&gt;
+
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mt19937_64&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rng&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;rng&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;seed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random_device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()());&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;uniform_int_distribution&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;distribution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;n = 1000000 첫번째보다 n은 10배 작음.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt; &lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Hoare’s&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;lomuto’s&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1회&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2.969&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2.919&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2회&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2.874&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2.911&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3회&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2.897&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2.889&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4회&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2.919&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2.886&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5회&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2.916&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2.875&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6회&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2.888&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2.878&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7회&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2.9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2.883&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8회&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2.924&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2.903&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9회&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2.891&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2.871&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10회&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2.88&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2.904&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;3-시드생성을-전역에&quot;&gt;3. 시드생성을 전역에&lt;/h2&gt;
+
+&lt;p&gt;다음코드를 전역과 메인함수에 넣고,&lt;/p&gt;
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mt19937_64&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rng&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;rng&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;seed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random_device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()());&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;uniform_int_distribution&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;distribution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;이것만 재귀에 넣어서 구했을때
+n은 두번째와 동일&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt; &lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Hoare’s&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;lomuto’s&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1회&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.095&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.101&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2회&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.088&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.104&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3회&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.093&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.094&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4회&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.101&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.098&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5회&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.093&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.093&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6회&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.088&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.091&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7회&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.085&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.092&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8회&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.083&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.089&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9회&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.085&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.091&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10회&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.085&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.091&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name></name></author><summary type="html">시드 세팅에 따른 성능 비교</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2020/01/06/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2020-01-06T22:53:01+09:00</published><updated>2020-01-06T22:53:01+09:00</updated><id>http://localhost:4000/jekyll/update/2020/01/06/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2020/01/06/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;Jekyll requires blog post files to be named according to the following format:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;YEAR-MONTH-DAY-title.MARKUP&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Where &lt;code class=&quot;highlighter-rouge&quot;&gt;YEAR&lt;/code&gt; is a four-digit number, &lt;code class=&quot;highlighter-rouge&quot;&gt;MONTH&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;DAY&lt;/code&gt; are both two-digit numbers, and &lt;code class=&quot;highlighter-rouge&quot;&gt;MARKUP&lt;/code&gt; is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry></feed>
