@@ -1,9 +1,7 @@
----
-layout: post
+<!-- ---
 title:  "c++11 random seed test"
-date:   2020-01-07 22:53:01 +0900
-categories: jekyll update
----
+categories: c++
+--- -->
 
 # 시드 세팅에 따른 성능 비교
 
