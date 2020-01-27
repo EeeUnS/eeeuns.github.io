@@ -16,8 +16,31 @@ $$
 \end{align*}
 $$
 
+$$
+\begin{align*}
+    T(n) &= T(n-1) + cn \\
+    &= T(n-2) + c(n-1) +cn \\
+    &= c\sum^{n}_{k=1}k \\
+    &= \dfrac{1}{2} cn^{2}\\
+    &= \Theta (n^{2})    
+\end{align*}
+$$
+
 $$ \begin{align} A & = B \\ & = C \end{align} $$
 
+$$
+\int_{-\infty}^\infty g(x) dx
+$$
+
+$$
+\begin{cases}
+  \dfrac{1}{2} \\[.5em]
+  \dfrac{3}{4}
+\end{cases}
+$$
+
+mathjax 참고
+https://mkkim85.github.io/blog-apply-mathjax-to-jekyll-and-github-pages/
 
 
 $$E[X]=\sum _{i=1}^{n-1}\sum _{j=i+1}^n\frac{2}{j-i+1}\\ =\sum _{i=1}^{n-1}\sum _{k=1}^{n-i}\frac{2}{k+1}\\ \le \sum _{i=1}^{n-1}\sum _{k=1}^n\frac{2}{k}\\ \le \sum _{i=1}^{n-1}c\lg n\\ \le cn\lg n$$
@@ -28,6 +51,23 @@ $$E[X]=\sum _{i=1}^{n-1}\sum _{j=i+1}^n\frac{2}{j-i+1}\\ =\sum _{i=1}^{n-1}\sum 
 https://jetalog.net/86
 
 https://jetalog.net/87?category=808871
+
+
+{% highlight cpp linenos %}
+int CUT_ROD(std::vector<int>& p) // p는 index 1부터 저장되어있다.
+{
+    const int n = p.size()-1;
+    if (n == 0)
+    {
+        return 0;
+    }
+    int q = INT32_MIN;
+    for (int i = 1; i <= n; i++)
+    {
+        q = std::max(q, p[i-1] + CUT_ROD(p, n - i));
+    }
+}
+{% endhighlight %}
 
 
 ```c++
@@ -45,13 +85,15 @@ int CUT_ROD(std::vector<int>& p) // p는 index 1부터 저장되어있다.
     }
 }
 ```
-
+$  E[X]=\sum_{i=1}^{n-1}\sum _{j=i+1}^n\frac{2}{j-i+1} $
 
 물체가 B구간을 지난후 $h$만큼 올라갔을때 속력이 0
-$E[X]=\sum _{i=1}^{n-1}\sum _{j=i+1}^n\frac{2}{j-i+1}\\ =\sum _{i=1}^{n-1}\sum _{k=1}^{n-i}\frac{2}{k+1}\\ \le \sum _{i=1}^{n-1}\sum _{k=1}^n\frac{2}{k}\\ \le \sum _{i=1}^{n-1}c\lg n\\ \le cn\lg n$
+
+$ E[X]=\sum _{i=1}^{n-1}\sum _{j=i+1}^n\frac{2}{j-i+1}\\ =\sum _{i=1}^{n-1}\sum _{k=1}^{n-i}\frac{2}{k+1}\\ \le \sum _{i=1}^{n-1}\sum _{k=1}^n\frac{2}{k}\\ \le \sum _{i=1}^{n-1}c\lg n\\ \le cn\lg n$
+
 이 되었으므로 A구간전의 물체의 높이를 $h$만큼 올린것과 같습니다. 다시 말해서 B구간을 지난 직후의 물체의 속력은 $v$입니다. A구간과 B구간의 공통점은 충격량이 같다는건데 이는 구간을 지난후의 속도 상승량이 같습니다. 이 속도 상승량을 $\Delta v$라고 합시다. 그러면 A구간을 지난 직후의 물체의 속력은 $v+\Delta v$이고 B구간을 지나기 직전의 속력은 $v-\Delta v$입니다. 
-물체가 B구간을 지난후 $h$만큼 올라갔을때 속력이 0
-$E[X]=\sum _{i=1}^{n-1}\sum _{j=i+1}^n\frac{2}{j-i+1}\\ =\sum _{i=1}^{n-1}\sum _{k=1}^{n-i}\frac{2}{k+1}\\ \le \sum _{i=1}^{n-1}\sum _{k=1}^n\frac{2}{k}\\ \le \sum _{i=1}^{n-1}c\lg n\\ \le cn\lg n$
+물체가 B구간을 지난후 $ h$만큼 올라갔을때 속력이 0
+$ E[X]=\sum _{i=1}^{n-1}\sum _{j=i+1}^n\frac{2}{j-i+1}\\ =\sum _{i=1}^{n-1}\sum _{k=1}^{n-i}\frac{2}{k+1}\\ \le \sum _{i=1}^{n-1}\sum _{k=1}^n\frac{2}{k}\\ \le \sum _{i=1}^{n-1}c\lg n\\ \le cn\lg n$
 이 되었으므로 A구간전의 물체의 높이를 $h$만큼 올린것과 같습니다. 다시 말해서 B구간을 지난 직후의 물체의 속력은 $v$입니다. A구간과 B구간의 공통점은 충격량이 같다는건데 이는 구간을 지난후의 속도 상승량이 같습니다. 이 속도 상승량을 $\Delta v$라고 합시다. 그러면 A구간을 지난 직후의 물체의 속력은 $v+\Delta v$이고 B구간을 지나기 직전의 속력은 $v-\Delta v$입니다. 
 물체가 B구간을 지난후 $h$만큼 올라갔을때 속력이 0
 $E[X]=\sum _{i=1}^{n-1}\sum _{j=i+1}^n\frac{2}{j-i+1}\\ =\sum _{i=1}^{n-1}\sum _{k=1}^{n-i}\frac{2}{k+1}\\ \le \sum _{i=1}^{n-1}\sum _{k=1}^n\frac{2}{k}\\ \le \sum _{i=1}^{n-1}c\lg n\\ \le cn\lg n$
