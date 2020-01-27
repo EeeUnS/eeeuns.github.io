@@ -34,7 +34,7 @@ n = 10000000
 
 ## 2. 여기서 매 파티션마다 시드값을 새로 줄경우에
 
-```c++
+```cpp
 std::mt19937_64 rng;
 rng.seed(std::random_device()());
 std::uniform_int_distribution<int>distribution(start, end)
