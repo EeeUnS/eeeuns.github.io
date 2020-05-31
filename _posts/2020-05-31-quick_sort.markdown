@@ -3,12 +3,14 @@ layout: post
 title:  "Introduction Quick Sort"
 date:   2020-05-31 21:53:01 +0900
 categories: paper
+use_math : true
 ---
 
 소개
 ====
 
 -   일반적으로 가장 많이 사용하는 정렬 알고리즘
+-   
 -   비교 정렬
 
 -   내부정렬
