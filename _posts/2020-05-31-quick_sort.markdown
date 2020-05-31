@@ -55,6 +55,10 @@ Hoare, C. A. R.이 1961년 처음으로 Quick sort를 제안했다. PARTITION은
 
 PARTITION 프로시저의 시간복잡도는 $\Theta(n)$이다.
 quick sort 작동 예시@reference1
+
+
+
+<img src="/assets/img/quicksort/q1.png" width="60%">
 ![Image Alt 텍스트](/assets/img/quicksort/q1.png)
 
 여러 기초 지식
