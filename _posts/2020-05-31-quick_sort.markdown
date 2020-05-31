@@ -151,8 +151,7 @@ $$\begin{aligned}
 
 이때의 비용을 나타낸 재귀함수는 $$T(n) = 2T(\dfrac{n}{2}) + cn$$ 이다.
 
-![quick sort 최선의 분할 케이스 재귀
-트리@reference1](/assets/img/quicksort/q2.png)
+![quick sort 최선의 분할 케이스 재귀트리@reference1](/assets/img/quicksort/q2.png)
 
 그림 2의 재귀트리를 통해서 전체 비용을 계산하여 시간복잡도를 구하면
 $\Theta(n \lg n)$이다. [^2]
@@ -181,8 +180,7 @@ $$T(n) \le T\left(\dfrac{9n}{10}\right) + T\left(\dfrac{n}{10}\right)+ cn$$
 
 ### 최악의 경우와 최선의 경우가 번갈아 나타나는 경우
 
-![최악,최선이 번갈아 나타나는 재귀
-트리@reference1](/assets/img/quicksort/q3.png)
+![최악,최선이 번갈아 나타나는 재귀트리@reference1](/assets/img/quicksort/q3.png)
 
 T(n) 일때의 시간복잡도와 T(n-1)일때의 시간복잡도는 둘다 $\Theta(n)$이다.
 따라서 이 둘의 시간복잡도를 합쳐도 결국 $\Theta(n)$이고 이를 합쳐서 보면
@@ -369,12 +367,12 @@ Hoare’s Partition은 실질적인 측면에서볼때 활용도가
 
 다음의 실제 테스트 결과를 봐도 알 수 있다.[^5]
 
-![image](./QuickSort/{pic/q7.png})
+![image]({/assets/img/quicksort/q7.png)
 
 Quick sort의 캐시 히트율
 ========================
 
-![image]({QuickSort/pic/quick1.png})
+![image](/assets/img/quicksort/quick1.png)
 
 다음은 Radix sort(기수 정렬)과 Quick sort의 입력 n에 따른 수행 명령어
 수/n를 나타낸 것이다. 기수 정렬의 시간복잡도는 $O(n)$이나 최고차항의
@@ -387,14 +385,21 @@ Quick sort의 캐시 히트율
 나와있는걸 생각해볼때 값이 정말 커지면 결국에는 시간복잡도에 따라
 기수정렬이 더 빠름이 명확할것으로 예상한다.
 
-![image]({QuickSort/pic/quick2.png}) ![Comparing Quicksort and Radix
+![image](/assets/img/quicksort/quick2.png) 
+![image](/assets/img/quicksort/quick3.png)
+
+
+Comparing Quicksort and Radix
 Sort by (a) instructions executed per item sorted (b) time per item
 sorted, and (c) cache misses per item sorted. This data is from a paper
 by LaMarca and Ladner [1996]. Due to such results, new versions of Radix
 Sort have been invented that take memory hierarchy into account, to
-regain its algorithmic advantages. Th e basic idea of cache
+regain its algorithmic advantages. The basic idea of cache
 optimizations is to use all the data in a block repeatedly before it is
-replaced on a miss.@reference2]({QuickSort/pic/quick3.png} "fig:")
+replaced on a miss.[@reference2]
+
+
+
 
 개선
 ====
@@ -436,8 +441,7 @@ $O(n \log n)$이지만 최선,최악에대해서 비교적 평균적인 수행�
 다음은 선택정렬을 수행하는 $n$에따른 수행시간이다. 여기서 테스트
 케이스의 $N =10000$ 이다.
 
-![삽입정렬 수행의 분할크기 n에 따른 퀵정렬
-수행시간@reference3]({QuickSort/pic/q6.png})
+![삽입정렬 수행의 분할크기 n에 따른 퀵정렬수행시간@reference3](/assets/img/quicksort/q6.png)
 
     INSERTION_SORT(A)
         for j = 2 to A.length
@@ -460,7 +464,7 @@ $O(n \log n)$이지만 최선,최악에대해서 비교적 평균적인 수행�
 모은다 그런후에 재귀의 범위를 왼쪽 오른쪽으로만 한다. 다음은 Dijstra가
 제안한 해답이다. 코드는 c++로 작성되어 있다.
 
-![3-way-partitioning 작동 방식 @reference4]({QuickSort/pic/q10.png})
+![3-way-partitioning 작동 방식 @reference4](/assets/img/quicksort/q10.png)
 
     void Quick3way(int a[], int lo, int hi)
     {
@@ -491,8 +495,7 @@ $O(n \log n)$이지만 최선,최악에대해서 비교적 평균적인 수행�
 
 다음은 J. Bentley과 D. McIlroy 제안한 좀더 빠른 의사코드이다.
 
-![Fast 3-way partitioning 작동 방식
-@reference4]({QuickSort/pic/q11.png})
+![Fast 3-way partitioning 작동 방식@reference4](/assets/img/quicksort/q11.png)
 
     void quicksort(Item a[], int l, int r) 
         { 
