@@ -54,8 +54,8 @@ Hoare, C. A. R.이 1961년 처음으로 Quick sort를 제안했다. PARTITION은
 다룬다.
 
 PARTITION 프로시저의 시간복잡도는 $\Theta(n)$이다.
-
-![quick sort 작동 예시@reference1](/assets/img/quicksort/q1.png)
+quick sort 작동 예시@reference1
+![Image Alt 텍스트](/assets/img/quicksort/q1.png)
 
 여러 기초 지식
 ==============
@@ -248,8 +248,8 @@ $A = \{z_1 , z_2, ... , z_n\}$의 각 요소가 내림차순으로 정렬되어�
 생각한다. 또한 집합 $Z_{ij} = \{z_i, z_{i+1}, ..., z_j\}$라 정의한다.
 여기서 $z_i$와 $z_j$는 최대 한번 비교된다. 이유는 PARTITION에서 비교를
 하는 경우는 하나의 원소가 pivot으로 선택 되었을 때인데, 이후에 이
-pivot은 절대로 다른 원소와 비교하지 않는다. 따라서 $X_{ij} = I\{ z_i$가
-$z_j$와 비교한다 $\}$
+pivot은 절대로 다른 원소와 비교하지 않는다. 따라서 $X_{ij} = I\{ z_i\mbox{가
+}z_j\mbox{와 비교한다}\}$
 
 $ X = \sum_{i=1}^{n-1}\sum_{j=i+1}^{n} X_{ij}$
 
@@ -747,7 +747,7 @@ std::sort는 J. Bentley D. McIlroy의 3 way partition과 수행시간이 상당�
 
 표 10: n = 10000000 J. Bentley D. McIlroy의 3 way partition의 성능 분석
 
-참고 자료 {#참고-자료 .unnumbered}
+참고 자료 
 =========
 
 <https://en.wikipedia.org/wiki/Quicksort>\
