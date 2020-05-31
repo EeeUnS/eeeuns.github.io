@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Introduction Quick Sort"
+title:  "Introduction to Quick Sort"
 date:   2020-05-31 21:53:01 +0900
 categories: paper
 use_math : true
