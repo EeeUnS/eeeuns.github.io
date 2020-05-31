@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "DreamHack 시스템 해킹 커리큘럼 01 기초,Memory Corrunption 1,2"
-date:   2020-05-23 21:53:01 +0900
+date:   2020-05-30 21:53:01 +0900
 categories: paper
 ---
 
@@ -473,24 +473,3 @@ char *read_data(int fd) {
 }
 ```
 0x7FFFFFFF
-
-
-
-```cpp
-
-```
-
-```cpp
-
-```
-
-```cpp
-
-```
-
-
-
-
-
-
-
