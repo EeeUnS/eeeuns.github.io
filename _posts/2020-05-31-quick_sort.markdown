@@ -58,8 +58,17 @@ quick sort 작동 예시@reference1
 
 
 
+<img src="/assets/img/0523/img17.jpg" width="60%">
+
+![Image Alt 텍스트](/assets/img/test/test-01.png)
+
 <img src="/assets/img/quicksort/q1.png" width="60%">
+
+
 ![Image Alt 텍스트](/assets/img/quicksort/q1.png)
+
+
+
 
 여러 기초 지식
 ==============
