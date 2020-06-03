@@ -42,7 +42,8 @@ int main(void) {
 #include <vector>
 #include <iostream>
 void f(const std::vector<int> &src) {
-        std::vector<int> dest(5);
+        //std::vector<int> dest(src); //오버플로우 막기
+        std::vector<int> dest(5);//오버플로우
         std::copy(src.begin(), src.end(), dest.begin());
 }
 int main(void){
@@ -56,25 +57,396 @@ int main(void){
         
 ```
 
+
 ```cpp
-// g++ -o container-2 container-2.cpp
+// g++ -o container-3 container-3.cpp
 #include <algorithm>
 #include <vector>
-#include <iostream>
-void f(const std::vector<int> &src) {
-        std::vector<int> dest(src); //오버플로우 막기
-        std::copy(src.begin(), src.end(), dest.begin());
+int main() {
+
+	//std::vector<int> v(10);
+
+	std::vector<int> v;
+	std::fill_n(v.begin(), 10, 0x42);
 }
-int main(void){
-        int size = 0;;
-        std::vector<int> v;
-        std::cin >> size;
-        v.resize(size);
-        v.assign(size, 0x41414141);
-        f(v);
+```
+Segmentation fault (core dumped)로 강종된다.
+크기할당이 없지만 없는 자리에 고정값을 채우기에 오버플로우가 일어난다.
+
+
+
+
+```cpp
+// g++ -o container-5 container-5.cpp -std=c++11
+#include <iostream>
+#include <vector>
+void f(const std::vector<int> &c) {
+        //	for(auto i = c.begin(), e = i + c.size(); i != e; ++i) {
+	for(auto i = c.begin(), e = i + 20; i != e; ++i) {
+		std::cout << *i << std::endl;
+	}
+}
+int main(void) {
+    std::vector<int> v;
+    v.push_back(1);
+    v.push_back(2);
+    v.push_back(3);
+    v.push_back(4);
+    v.push_back(5);
+    f(v);
 }
 ```
 
+out of range
+
+
+
+```cpp
+// g++ -o container-7 container-7.cpp
+#include <vector>
+#include <iostream>
+//void insert_table(std::vector<int> &table, unsigned long long pos, int value) {
+void insert_table(std::vector<int> &table, long long pos, int value) {
+    if(pos >= (long long)table.size()){
+        std::cout << "overflow!" << std::endl;
+        return;
+    }
+    table[pos] = value;
+}
+int main(void){
+        long long idx;
+        std::vector<int> v(5);
+        std::cin >> idx;
+        insert_table(v, idx, 0x41414141);
+}
+```
+pos에 음수가 들어오게 할시에 덮어 쓸 수 있음
+
+## Uninitialized Value
+
+
+```cpp
+// g++ -o c-1 uninit-1.c
+#include <iostream>
+int main(void) {
+    int i;
+    std::cout << i;
+}
+```
+초기화 하지않은 i출력
+
+
+```cpp
+//g++ -o uninit-2 uninit-2.cpp
+#include <iostream>
+class S {   
+    int c;
+    public:
+      int f(int i) const { return i + c; }
+};
+int f() {
+    S s;
+    return s.f(10);
+}
+int main(void) {
+    int val = f();
+    std::cout << val << std::endl;
+}
+```
+초기화하지 않은 멤버 변수 사용
+
+
+```cpp
+// g++ -o uninit-3 uninit-3.cpp
+#include <iostream>
+class S {
+public:
+    S() : mem(0), mem_size(0) { }
+    S(int mem_size) {
+        if(mem_size > 0){
+            this->mem = new char[mem_size];
+            this->mem_size = mem_size;
+        }
+    }
+    char *mem;
+    int mem_size;
+};
+int main(void){
+    S s(-1);
+    std::cout << s.mem << std::endl;
+}
+```
+
+S가 mem_size가 0보다 클때만 할당하는데 작은값이 들어갔을때는 값들이 쓰레기로 나돌아다닌다. 후에 접근가능할시에 잠재적 위험이 있을 수 있다.
+
+
+
+## Use-After-Free
+
+
+
+```cpp
+// g++ -o uaf-1 uaf-1.cpp
+#include <iostream>
+  
+struct S {
+    void f();
+};
+  
+int main(void) {
+    S *s = new S;
+    // ...
+    delete s;
+    // ...
+    s->f();
+}
+```
+해제된 메모리에 접근
+```cpp
+// g++ -o uaf-2 uaf-2.cpp
+#include <string>
+#include <iostream>
+std::string str_func(){
+        std::string a = "aaaa";
+        return a;
+}
+void display_string(const char * buf){
+        std::cout << buf << std::endl;
+}
+int main(void) {
+    const char *str = str_func().c_str();
+    display_string(str);
+    std::string b = "bbbb"; //uaf
+    display_string(str);  /* Undefined behavior */
+}
+```
+str_func을 return 할때 지역변수인 a는 메모리가 해제된다. 따라서 str은 해제된 a를 가르켜 첫번째 출력에서 aaaa가 출력되고 후에 a와 같은 주소를 가르키는 b에서 "bbbb"로 초기화시키고 str을 출력했을때 bbbb가 나온다.
+
+
+```cpp
+// g++ -o smart-1 smart-1.cpp -std=c++11
+#include <memory>
+int main() {
+  int* i = new int;
+  std::shared_ptr<int> p1(i);
+  std::shared_ptr<int> p2(i);
+}
+```
+같은 메모리를 서로 다른 두 개의 스마트 포인터가 가리키게 해서는 안 된다
+여기에선 i를 두번해제한다.
+
+```cpp
+// g++ smart-2 smart-2.cpp
+#include <iostream>
+#include <memory>
+struct B {
+        virtual ~B() = default; // polymorphic object
+        // ...
+};
+struct D : B {};
+void g(std::shared_ptr<D> derived){
+        std::cout << "hi im g!" << std::endl;
+};
+int main(void) {
+        std::shared_ptr<B> poly(new D);
+        // ...
+        g(std::shared_ptr<D>(dynamic_cast<D *>(poly.get())));
+}
+```
+인자로넘겨주면서 dynamic_cast로 인해 shared_ptr이 새로 생성되어 인자로 넘겨지는데 이과정에서 poly의 메모리가 해제된다 따라서 두번해제되는 버그가 생김
+
+
+```cpp
+// g++ -o smart-3 smart-3.cpp -std=c++11
+#include <memory>
+int main() {
+	std::shared_ptr<int> p1 = std::make_shared<int>();
+	std::shared_ptr<int> p2(p1);
+}
+```
+smart-1에 대한 해결책
+
+
+
+
+
+
+얕은 복사
+
+```cpp
+// g++ shallow_copy shallow_copy.cpp
+#include <iostream>
+#include <cstring>
+class A{
+public:
+    A(int _age, char *_name) {
+        age = _age;
+        name = new char [strlen(_name)+1];
+        strcpy(name,_name);
+    }
+    A(const A& s)
+    {
+        age = s.age;
+        name = s.name;
+    }
+    int age;
+    char *name;
+};
+int main(void){
+        A st1(20, "dreamhack");
+        A st2(st1);
+        std::cout << st1.name << std::endl;
+        std::cout << st2.name << std::endl;
+        strcpy(st1.name, "hackdream"); //modify st1 name
+        std::cout << st1.name << std::endl;
+        std::cout << st2.name << std::endl;
+}
+```
+
+깊은복사
+```cpp
+// g++ deep_copy deep_copy.cpp
+#include <iostream>
+#include <cstring>
+class A{
+public:
+    A(int _age, char *_name) {
+        age = _age;
+        name = new char[strlen(_name)+1];
+        strcpy(name,_name);
+    }
+    A(const A& s)
+    {
+        age = s.age;
+        name = new char[strlen(s.name)+1];
+        strcpy(name,s.name);
+    }
+    int age;
+    char *name;
+};
+int main(void){
+        A st1(20, "dreamhack");
+        A st2(st1);
+        std::cout << st1.name << std::endl;
+        std::cout << st2.name << std::endl;
+        strcpy(st1.name, "hackdream"); //modify st1 name
+        std::cout << st1.name << std::endl;
+        std::cout << st2.name << std::endl;
+}
+
+```
+
++ Double Free 버그발생
+
+vector에서 class나 포인터를 사용할때도 마찮가지
+
+
+
+## Type Confusion
+
+변수나 객체를 선언 혹은 초기화되었을 때와 다른 타입으로 사용할 때 발생하는 취약점
+
+```cpp
+//gcc -o type_confusion1 type_confusion1.c
+#include <stdio.h>
+int main(void){
+    int val;
+    scanf("%d", &val);
+    puts(val);
+}
+
+```
+puts는 char *를 인자로 받는데 int형을 넘겨버림 Segmentation fault 발생
+
+
+```cpp
+// g++ -o wrong_cast wrong_cast.cpp
+#include <iostream>
+#include <string.h>
+using namespace std;
+class Parent 
+{
+public:
+};
+class Print: public Parent
+{
+public:
+    virtual void print_str(char *str) {
+    	cout << str << endl;
+    }
+    ~Print() {
+    }
+};
+class Read: public Parent
+{
+public:
+    virtual void read_str(char *str) {
+        cout << "Input: " << str << endl;
+    	cin >> str;
+    	cout << "Data: " << str << endl;
+    }
+    ~Read() {
+    }
+};
+int main()
+{
+    
+	Parent *p1 = new Print();
+	Parent *p2 = new Read();
+	Print *b1;
+	char buf[256];
+	strcpy(buf, "I'm print_str");
+	b1 = static_cast<Print*>(p1);
+	b1->print_str(buf);
+	b1 = static_cast<Print*>(p2);
+	b1->print_str(buf);
+	return 0;
+}
+
+```
+
+
+## String in C++
+
+```cpp
+// g++ -o string-leak string-leak.cpp
+#include <iostream>
+#include <fstream>
+int main(void) {
+    char buffer[32];
+    std::ifstream is ("test.txt", std::ifstream::binary); //test.txt have 32bytes of "a"
+    try {
+        is.read(buffer, sizeof(buffer));
+    } catch (std::ios_base::failure &e) {
+        // Error handling
+    }
+    std::cout << buffer << std::endl;
+
+```
+id.read는 끝 널 처리를 안해준다 따라서 문자열로 출력시 뒤에가 릭이 발생
+
+
+
+```cpp
+// g++ -o string-null string-null.cpp
+#include <cstdlib>
+#include <string>
+#include <iostream>
+int main(void) {
+    std::string tmp(std::getenv("TMP"));
+    if(!tmp.empty()) {
+           std::cout << tmp << std::endl;
+    }
+}
+
+```
+TMP가 비어있을시에 string은 null을 가지며 null dereference가 발생
+
+
+
+```cpp
+
+```
 
 
 
