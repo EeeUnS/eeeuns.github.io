@@ -17,41 +17,38 @@ Carmichael function
 
 Then let us write
 
-$$\begin{gathered}
-a^{p-1} = 1 + hp.  \\
-\intertext{Raising each member of this equation to the
-$p^{\text{th}}$ power we may write the result in the form}
-a^{p(p-1)} = 1 + h_1p^2.  \\
-\intertext{where $h_1$ is an integer. Hence}
-a^{p(p-1)} \equiv 1 \bmod p^2.  \\
-\intertext{By raising each member of (2) to the $p^{\text{th}}$
-power we can readily show that}
-a^{p^2(p-1)} \equiv 1 \bmod p^3.  \\
-\intertext{It is now easy to see that we shall have in general}
-a^{p^{\alpha - 1}(p-1)} \equiv 1 \bmod p^{\alpha}.  \\
-\intertext{where $\alpha$ is a positive integer; that is,}
-a^{\phi(p^{\alpha})} \equiv 1 \bmod p^{\alpha}. \end{gathered}$$
+$$a^{p-1} = 1 + hp.  $$
+Raising each member of this equation to the $p^{\text{th}}$ power we may write the result in the form
+$$a^{p(p-1)} = 1 + h_1p^2.  $$
+where $h_1$ is an integer. Hence
+$$a^{p(p-1)} \equiv 1 \bmod p^2.  $$
+By raising each member of (2) to the $p^{\text{th}}$
+power we can readily show that
+$$a^{p^2(p-1)} \equiv 1 \bmod p^3.  $$
+It is now easy to see that we shall have in general
+$$a^{p^{\alpha - 1}(p-1)} \equiv 1 \bmod p^{\alpha}.  $$
+where $\alpha$ is a positive integer; that is,
+$$a^{\phi(p^{\alpha})} \equiv 1 \bmod p^{\alpha}.$$
 
 For the special case when $p$ is 2 this result can be extended. For this
 case (1) becomes
 
 $$\begin{gathered}
-a = 1 + 2h.  \\
-\intertext{Squaring we have}
-a^2 = 1 + 4h(h+1).  \\
-\intertext{Hence,}
-a^2 = 1+8h_1,  \\
-\intertext{where $h_1$ is an integer. Therefore}
-a^2 \equiv 1 \bmod 2^3.  \\
-\intertext{Squaring (3) we have}
-a^{2^2} = 1 + 2^4h_2;  \\
-\intertext{or}
-a^{2^2} \equiv 1 \bmod 2^4.  \\
-\intertext{It is now easy to see that we shall have in general}
-a^{2^{\alpha-2}} \equiv 1 \bmod 2^{\alpha}  \\
-\intertext{if $\alpha > 2$. That is,}
-a^{\frac{1}{2}\phi(2^{\alpha})} \equiv 1 \bmod 2^{\alpha}
-  \text{ if } a > 2.\end{gathered}$$
+$$ a = 1 + 2h. $$
+Squaring we have
+$$ a^2 = 1 + 4h(h+1). $$
+Hence,}
+$$ a^2 = 1+8h_1, $$
+where $h_1$ is an integer. Therefore
+$$ a^2 \equiv 1 \bmod 2^3. $$
+Squaring (3) we have
+$$ a^{2^2} = 1 + 2^4h_2; $$
+or}
+$$ a^{2^2} \equiv 1 \bmod 2^4. $$
+It is now easy to see that we shall have in general
+$$ a^{2^{\alpha-2}} \equiv 1 \bmod 2^{\alpha} $$
+if $\alpha > 2$. That is,
+$$a^{\frac{1}{2}\phi(2^{\alpha})} \equiv 1 \bmod 2^{\alpha} \text{ if } a > 2.$$
 
 Now in terms of the $\phi$-function let us define a new function
 $\lambda(m)$ as follows:
@@ -98,7 +95,7 @@ a^{\lambda(m)} &\equiv 1 \mod 2^\alpha, \\
 a^{\lambda(m)} &\equiv 1 \mod p_1^{\alpha_1}, \\
 \ldots \ldots \\
 a^{\lambda(m)} &\equiv 1 \mod p_n^{\alpha_n}. \\
-\intertext{From these congruences we have immediately}
+\text{From these congruences we have immediately}
 a^{\lambda(m)} &\equiv 1 \mod m.\end{aligned}$$
 
 We may state this result in full in the following theorem:
@@ -114,11 +111,11 @@ As an excellent example to show the possible difference between the
 exponent $\lambda(m)$ in this theorem and the exponent $\phi(m)$ in
 Fermat’s general theorem, let us take
 
-$$\begin{gathered}
+$$\begin{aligned}
 m = 2^6 \cdot 3^3 \cdot 5 \cdot 7 \cdot 13 \cdot 17 \cdot 19
         \cdot 37 \cdot 73. \\
-\intertext{Here}
-\lambda(m) = 2^4 \cdot 3^2, \quad \phi(m) = 2^{31} \cdot 3^{10}.\end{gathered}$$
+\text{Here}
+\lambda(m) = 2^4 \cdot 3^2, \quad \phi(m) = 2^{31} \cdot 3^{10}.\end{aligned}$$
 
 In a later chapter we shall show that there is no exponent $\nu$ less
 than $\lambda(m)$ for which the congruence
