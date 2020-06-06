@@ -127,7 +127,7 @@ a^{\lambda(m)} &\equiv 1 \mod 2^\alpha, \\
 a^{\lambda(m)} &\equiv 1 \mod p_1^{\alpha_1}, \\
 \ldots \ldots \\
 a^{\lambda(m)} &\equiv 1 \mod p_n^{\alpha_n}. \\
-\text{From these congruences we have immediately} 
+\text{From these congruences we have immediately}\\
 a^{\lambda(m)} &\equiv 1 \mod m.\end{aligned}$$
 
 We may state this result in full in the following theorem:
