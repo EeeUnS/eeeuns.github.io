@@ -16,17 +16,18 @@ use_math : true
 
 Then let us write
 
-$$a^{p-1} = 1 + hp.  $$
+$$a^{p-1} = 1 + hp.  (1)$$
 
 
 Raising each member of this equation to the $p^{\text{th}}$ power we may write the result in the form
 
 
-$$a^{p(p-1)} = 1 + h_1p^2.  $$
+$$a^{p(p-1)} = 1 + h_1p^2.  (2)$$
 
 
-where $h_1$ is an integer. Hence
+where $h_1$ is an integer. 
 
+Hence
 
 $$a^{p(p-1)} \equiv 1 \bmod p^2.  $$
 
@@ -58,7 +59,7 @@ $$ a^2 = 1 + 4h(h+1). $$
 
 Hence,
 
-$$ a^2 = 1+8h_1, $$
+$$ a^2 = 1+8h_1, (3)$$
 
 where $h_1$ is an integer. Therefore
 
