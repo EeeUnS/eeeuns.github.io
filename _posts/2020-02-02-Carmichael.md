@@ -122,13 +122,17 @@ congruence to the power $\frac{\lambda(m)}{\lambda(p_1^{\alpha_1})}$;
 $\ldots$; both members of the last congruence to the power
 $\frac{\lambda(m)}{\lambda(p_n^{\alpha_n})}$. Then we have
 
-$$\begin{aligned}
-a^{\lambda(m)} &\equiv 1 \mod 2^\alpha, \\
-a^{\lambda(m)} &\equiv 1 \mod p_1^{\alpha_1}, \\
-\ldots \ldots \\
-a^{\lambda(m)} &\equiv 1 \mod p_n^{\alpha_n}. \\
-\text{From these congruences we have immediately}\\
-a^{\lambda(m)} &\equiv 1 \mod m.\end{aligned}$$
+$$ a^{\lambda(m)} &\equiv 1 \mod 2^\alpha, $$
+
+$$ a^{\lambda(m)} &\equiv 1 \mod p_1^{\alpha_1}, $$
+
+$$ \ldots \ldots $$
+
+$$ a^{\lambda(m)} &\equiv 1 \mod p_n^{\alpha_n}. $$
+
+From these congruences we have immediately
+
+$$a^{\lambda(m)} &\equiv 1 \mod m.\end{aligned}$$
 
 We may state this result in full in the following theorem:
 
@@ -143,11 +147,11 @@ As an excellent example to show the possible difference between the
 exponent $\lambda(m)$ in this theorem and the exponent $\phi(m)$ in
 Fermat’s general theorem, let us take
 
-$$\begin{aligned}
-m = 2^6 \cdot 3^3 \cdot 5 \cdot 7 \cdot 13 \cdot 17 \cdot 19
-        \cdot 37 \cdot 73. \\
-\text{Here}
-\lambda(m) = 2^4 \cdot 3^2, \quad \phi(m) = 2^{31} \cdot 3^{10}.\end{aligned}$$
+$$m = 2^6 \cdot 3^3 \cdot 5 \cdot 7 \cdot 13 \cdot 17 \cdot 19 \cdot 37 \cdot 73. $$
+
+Here
+
+$$\lambda(m) = 2^4 \cdot 3^2, \quad \phi(m) = 2^{31} \cdot 3^{10}.$$
 
 In a later chapter we shall show that there is no exponent $\nu$ less
 than $\lambda(m)$ for which the congruence
@@ -187,9 +191,9 @@ reason, they are not very common.)
 
     $n = p_1^{e_1} \cdots p_r^{e_r}$
 
-    $ \phi(n) = \phi(p_1^{e_1})* \ldots*\phi(p_r^{e_r})$
+    $\phi(n) = \phi(p_1^{e_1})* \ldots*\phi(p_r^{e_r})$
 
-    $\text{lcm}(\phi(p_1^{e_1}, \ldots, \phi(p_r^{e_r})) | (\phi(p_1^{e_1})* \ldots*\phi(p_r^{e_r}))$
+    $$\lcm(\phi(p_1^{e_1}, \ldots, \phi(p_r^{e_r})) | (\phi(p_1^{e_1})* \ldots*\phi(p_r^{e_r}))$$
 
     $\lambda(n) \mid \phi(n)$
 
