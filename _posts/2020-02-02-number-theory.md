@@ -1,8 +1,11 @@
 ---
 layout: post
 title:  "기초 number theory"
-date:   2020-02-02 04:53:01 +0900
+date:   2020-02-02 00:53:01 +0900
 categories: math
+use_math : true
+
+
 ---
 기초 정수론
 ===========

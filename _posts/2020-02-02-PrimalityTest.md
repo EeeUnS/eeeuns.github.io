@@ -1,9 +1,9 @@
-
 ---
 layout: post
 title:  "PrimalityTest"
-date:   2020-02-02 04:53:01 +0900
+date:   2020-02-02 01:53:01 +0900
 categories: math
+use_math : true
 ---
 
 소수 판별법
