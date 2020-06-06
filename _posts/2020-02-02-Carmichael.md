@@ -18,37 +18,37 @@ Carmichael function
 Then let us write
 
 $$\begin{gathered}
-a^{p-1} = 1 + hp. \tag{1} \\
+a^{p-1} = 1 + hp.  \\
 \intertext{Raising each member of this equation to the
 $p^{\text{th}}$ power we may write the result in the form}
-a^{p(p-1)} = 1 + h_1p^2. \tag{2} \\
+a^{p(p-1)} = 1 + h_1p^2.  \\
 \intertext{where $h_1$ is an integer. Hence}
-a^{p(p-1)} \equiv 1 \bmod p^2. \notag \\
+a^{p(p-1)} \equiv 1 \bmod p^2.  \\
 \intertext{By raising each member of (2) to the $p^{\text{th}}$
 power we can readily show that}
-a^{p^2(p-1)} \equiv 1 \bmod p^3. \notag \\
+a^{p^2(p-1)} \equiv 1 \bmod p^3.  \\
 \intertext{It is now easy to see that we shall have in general}
-a^{p^{\alpha - 1}(p-1)} \equiv 1 \bmod p^{\alpha}. \notag \\
+a^{p^{\alpha - 1}(p-1)} \equiv 1 \bmod p^{\alpha}.  \\
 \intertext{where $\alpha$ is a positive integer; that is,}
-a^{\phi(p^{\alpha})} \equiv 1 \bmod p^{\alpha}. \notag\end{gathered}$$
+a^{\phi(p^{\alpha})} \equiv 1 \bmod p^{\alpha}. \end{gathered}$$
 
 For the special case when $p$ is 2 this result can be extended. For this
 case (1) becomes
 
 $$\begin{gathered}
-a = 1 + 2h. \notag \\
+a = 1 + 2h.  \\
 \intertext{Squaring we have}
-a^2 = 1 + 4h(h+1). \notag \\
+a^2 = 1 + 4h(h+1).  \\
 \intertext{Hence,}
-a^2 = 1+8h_1, \tag{3} \\
+a^2 = 1+8h_1,  \\
 \intertext{where $h_1$ is an integer. Therefore}
-a^2 \equiv 1 \bmod 2^3. \notag \\
+a^2 \equiv 1 \bmod 2^3.  \\
 \intertext{Squaring (3) we have}
-a^{2^2} = 1 + 2^4h_2; \notag \\
+a^{2^2} = 1 + 2^4h_2;  \\
 \intertext{or}
-a^{2^2} \equiv 1 \bmod 2^4. \notag \\
+a^{2^2} \equiv 1 \bmod 2^4.  \\
 \intertext{It is now easy to see that we shall have in general}
-a^{2^{\alpha-2}} \equiv 1 \bmod 2^{\alpha} \notag \\
+a^{2^{\alpha-2}} \equiv 1 \bmod 2^{\alpha}  \\
 \intertext{if $\alpha > 2$. That is,}
 a^{\frac{1}{2}\phi(2^{\alpha})} \equiv 1 \bmod 2^{\alpha}
   \text{ if } a > 2.\end{gathered}$$
