@@ -122,17 +122,17 @@ congruence to the power $\frac{\lambda(m)}{\lambda(p_1^{\alpha_1})}$;
 $\ldots$; both members of the last congruence to the power
 $\frac{\lambda(m)}{\lambda(p_n^{\alpha_n})}$. Then we have
 
-$$ a^{\lambda(m)} &\equiv 1 \mod 2^\alpha, $$
+$$ a^{\lambda(m)} \equiv 1 \mod 2^\alpha, $$
 
-$$ a^{\lambda(m)} &\equiv 1 \mod p_1^{\alpha_1}, $$
+$$ a^{\lambda(m)} \equiv 1 \mod p_1^{\alpha_1}, $$
 
 $$ \ldots \ldots $$
 
-$$ a^{\lambda(m)} &\equiv 1 \mod p_n^{\alpha_n}. $$
+$$ a^{\lambda(m)} \equiv 1 \mod p_n^{\alpha_n}. $$
 
 From these congruences we have immediately
 
-$$a^{\lambda(m)} &\equiv 1 \mod m.\end{aligned}$$
+$$a^{\lambda(m)} \equiv 1 \mod m.\end{aligned}$$
 
 We may state this result in full in the following theorem:
 
@@ -147,7 +147,7 @@ As an excellent example to show the possible difference between the
 exponent $\lambda(m)$ in this theorem and the exponent $\phi(m)$ in
 Fermat’s general theorem, let us take
 
-$$m = 2^6 \cdot 3^3 \cdot 5 \cdot 7 \cdot 13 \cdot 17 \cdot 19 \cdot 37 \cdot 73. $$
+$$m = 2^6 \cdot 3^3 \cdot 5 \cdot 7 \cdot 13 \cdot 17 \cdot 19\cdot 37 \cdot 73. $$
 
 Here
 
