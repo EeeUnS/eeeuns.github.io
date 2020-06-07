@@ -12,7 +12,35 @@ use_math : true
 
 ===================
 
-<http://www.gutenberg.org/files/13693/13693-pdf.pdf>
+
+
+# 추가 정보
+
+카마이클 함수는 두가지 [정의](https://mathworld.wolfram.com/CarmichaelFunction.html)가 있다.
+따라서 이 함수를 사용하는 문서마다 정의를 명시해주어야한다.
+ver 1. 
+
+$$\lambda(n) = \operatorname{lcm}(\phi(p_1^{e_1}), \ldots, \phi(p_r^{e_r})).$$
+
+ver 2.
+
+
+$$\begin{aligned}
+\lambda(2^{\alpha}) &= \phi(2^{\alpha}) \text{ if $a = 0, 1, 2$;} \\
+\lambda(2^{\alpha}) &= \frac{1}{2}\phi(2^{\alpha})
+                                               \text{ if $a > 2$;} \\
+\lambda(p^{\alpha}) &= \phi(p^{\alpha})
+                                   \text{ if $p$ is an odd prime;} \\
+\lambda(2^{\alpha} p_1^{\alpha_1} p_2^{\alpha_2} \cdots p_n^{\alpha_n}) 
+&= \text{lcm}(
+    \lambda(2^{\alpha}),
+    \lambda(p_1^{\alpha_1}),
+    \lambda(p_2^{\alpha_2}), \ldots, \lambda(p_n^{\alpha_n}
+    )
+)\end{aligned}$$
+
+
+[ref](http://www.gutenberg.org/files/13693/13693-pdf.pdf)
 
 Then let us write
 
@@ -175,7 +203,7 @@ $a^{\lambda(n)} \equiv 1 (\mod n)$ for all $a \in \mathbb Z_n^*$,
 
 where $n = p_1^{e_1} \cdots p_r^{e_r}$ and $\lambda(n)$ is defined by
 
-$$\lambda(n) = \text{lcm}(\phi(p_1^{e_1}), \ldots, \phi\phi(p_r^{e_r})).$$
+$$\lambda(n) = \operatorname{lcm}(\phi(p_1^{e_1}), \ldots, \phi(p_r^{e_r})).$$
 
 Prove that $\lambda(n) \mid \phi(n)$. A composite number $n$ is a
 Carmichael number if $\lambda(n) \mid n - 1$. The smallest Carmichael
@@ -193,7 +221,7 @@ reason, they are not very common.)
 
     $\phi(n) = \phi(p_1^{e_1})* \ldots*\phi(p_r^{e_r})$
 
-    $$\lcm(\phi(p_1^{e_1}, \ldots, \phi(p_r^{e_r})) | (\phi(p_1^{e_1})* \ldots*\phi(p_r^{e_r}))$$
+    $$\operatorname{lcm}(\phi(p_1^{e_1}, \ldots, \phi(p_r^{e_r})) | (\phi(p_1^{e_1})* \ldots*\phi(p_r^{e_r}))$$
 
     $\lambda(n) \mid \phi(n)$
 
