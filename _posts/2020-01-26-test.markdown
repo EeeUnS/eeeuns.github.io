@@ -5,6 +5,8 @@ date:   2020-01-26 22:53:01 +0900
 use_math : true
 ---
 물체가 A구간에 진입하기전 바닥에서의 속도를 $v$라 합시다.
+ $$\{a_0,a_2, … , a_n \}$$
+
 
 $$
 \begin{align*}
@@ -70,7 +72,7 @@ int CUT_ROD(std::vector<int>& p) // p는 index 1부터 저장되어있다.
 {% endhighlight %}
 
 
-{% highlight c++ %}
+{% highlight c++ linenos %}
 int CUT_ROD(std::vector<int>& p) // p는 index 1부터 저장되어있다.
 {
     const int n = p.size()-1;
