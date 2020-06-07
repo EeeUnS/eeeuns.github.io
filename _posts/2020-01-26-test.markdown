@@ -70,7 +70,7 @@ int CUT_ROD(std::vector<int>& p) // p는 index 1부터 저장되어있다.
 {% endhighlight %}
 
 
-```c++
+{% highlight c++ %}
 int CUT_ROD(std::vector<int>& p) // p는 index 1부터 저장되어있다.
 {
     const int n = p.size()-1;
@@ -84,7 +84,7 @@ int CUT_ROD(std::vector<int>& p) // p는 index 1부터 저장되어있다.
         q = std::max(q, p[i-1] + CUT_ROD(p, n - i));
     }
 }
-```
+{% endhighlight  %}
 $  E[X]=\sum_{i=1}^{n-1}\sum _{j=i+1}^n\frac{2}{j-i+1} $
 
 물체가 B구간을 지난후 $h$만큼 올라갔을때 속력이 0
