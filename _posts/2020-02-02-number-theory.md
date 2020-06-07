@@ -21,7 +21,7 @@ $d,m,n,$이 어떤 정수일 때, 다음이 성립한다.
 
 이 장을 이해하기위해서 약속 몇가지를 정의한다.
 
--   $d$가 $n$의 약수(인수)일 때 $d\: |\: n$으로 표시한다.
+-   $d$가 $n$의 약수(인수)일 때 $d \mid n$으로 표시한다.
 
 -   $m$과 $n$의 최대공약수는 $\gcd(m,n)$이라고 한다.
 
@@ -127,14 +127,17 @@ $\gcd(f(x), f(y)) = \gcd(f(\gcd(x,y)),0)$이 되고 이는$f(\gcd(x,y))$과
 
 $a$와 $b$가 음이 아니고 동시에 0이 아닌 정수라 하면 다음을 만족시키는
 정수 $s$와 $t$가 존재한다.
-$$\gcd(a,b) = s\cdot a + t\cdot b\protect\footnote{선형 디오판토스 방정식이라고도 한다.}$$
+$$\gcd(a,b) = s\cdot a + t\cdot b $$
+
+선형 디오판토스 방정식이라고도 한다.
 
 베주의 항등식
+
 -------------
 
 $ax + by =\gcd(x, y)$인 $a$, $b$가 존재한다.
 
-집합 $S = \left\{ m | m =ax+by> , x\in \mathbf{Z} , y \in  \right\}$를
+집합 $S = \left\lbrace m | m =ax+by> , x\in \mathbf{Z} , y \in  \right\rbrace$를
 생각해보면 ,이 집합 $S$는 $S \subset \mathbf{Z}$ ,
 $S \subset \varnothing$ ( x, y를 원소로 가짐을 알 수 있다.) 이다. 또한,
 자연수의 정렬성으로부터 최소가 되는 원소 $d$가 존재한다.
@@ -282,11 +285,11 @@ $$a^{\phi(n)} \bmod n = 1$$
 정수 n에 대해서 1부터 n까지의 양의 정수 중에 n과 서로소인 것의 집합을
 생각해보자. 그러면 이는 집합
 
-$A = \{ r_1 ,r_2,r_3, \cdots ,r_{\phi(n)}\}$[^4]
+$A = \left\lbrace r_1 ,r_2,r_3, \cdots ,r_{\phi(n)}\right\rbrace$[^4]
 
 으로 나타낼 수 있다. 이 집합은 A라하고 이 각 원소에 n과 서로소인 a를
 곱한 집합을 B집합이라 하자.
-$$B = \{ ar_1 ,ar_2,ar_3, \cdots ,ar_{\phi(n)}\}$$ 확실한건 $B$에 있는
+$$B = \left\lbrace ar_1 ,ar_2,ar_3, \cdots ,ar_{\phi(n)}\right\rbrace$$ 확실한건 $B$에 있는
 모든 원소는 $n$과 서로소인 것이다. 그럼 $B$집합의 각 원소를 $\bmod n$에
 대해 계산한 것을 생각해보자. 이는 각 원소의 나머지가 a를 곱하기전 값과
 같은지는 모르지만 $\phi(n)$개에 대해서 각각 일대일대응이 가능 한다는것을
@@ -315,3 +318,4 @@ $$a^{p-1} \equiv 1 \bmod p.$$
 [^5]: 실제 증명은 귀류법을 통해서
     증명할수있다.$ar_i  \equiv ar_j \bmod n $ 인
     $1 \le i < j \le \phi(n)$ 이 존재한다고 가정해보자.
+
