@@ -196,7 +196,7 @@ $\pi[]$를 이용해서 다시 비교하지 않아도 \`\`aba”까지 일치함
 매칭이 틀렸을때 그에 따른 $\pi$값과 되돌아가는 순서를
 나타낸것이다.
 
-
+```cpp
     KMP-MATCHER(T,P)
         n = T.length
         m = P:length
@@ -208,7 +208,7 @@ $\pi[]$를 이용해서 다시 비교하지 않아도 \`\`aba”까지 일치함
             if P [q+1] == T[i]
                 q = q + 1 // next character matches
             if q == m // is all of P matched?
-                print ``Pattern occurs with shift" i - m
+                print "Pattern occurs with shift" i - m
                 q  = PI[q]
 
     COMPUTE-PREFIX-FUNCTION(P) /
@@ -223,3 +223,4 @@ $\pi[]$를 이용해서 다시 비교하지 않아도 \`\`aba”까지 일치함
                 k = k + 1
         PI[q] = k 
     retunr PI
+```
