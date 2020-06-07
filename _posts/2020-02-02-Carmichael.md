@@ -132,7 +132,7 @@ $$ a^{\lambda(m)} \equiv 1 \mod p_n^{\alpha_n}. $$
 
 From these congruences we have immediately
 
-$$a^{\lambda(m)} \equiv 1 \mod m.\end{aligned}$$
+$$a^{\lambda(m)} \equiv 1 \mod m.$$
 
 We may state this result in full in the following theorem:
 
