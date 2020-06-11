@@ -383,7 +383,7 @@ Hoare’s Partition은 실질적인 측면에서볼때 활용도가
 
 다음의 실제 테스트 결과를 봐도 알 수 있다.[^5]
 
-![image]({/assets/img/quicksort/q7.PNG)
+![image]({/assets/img/quicksort/q7.png)
 
 Quick sort의 캐시 히트율
 ========================
