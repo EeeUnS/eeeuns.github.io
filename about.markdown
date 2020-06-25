@@ -4,8 +4,11 @@ title: About
 permalink: /about/
 ---
 
-my github : [github](https://github.com/EeeUnS)
+- email : euns312510@gmail.com
+- my github : [github](https://github.com/EeeUnS)
+- linked in : [linkedin](https://www.linkedin.com/in/%EC%9C%A4%EC%8A%B9-%EC%9D%B4-754389186/)
+- Univ : PKNU(17~)
+- Skill : C,C++
 
-linked in : [linkedin](https://www.linkedin.com/in/%EC%9C%A4%EC%8A%B9-%EC%9D%B4-754389186/)
 
 <!-- [jekyll-organization]: https://github.com/jekyll -->
