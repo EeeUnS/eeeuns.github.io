@@ -37,7 +37,7 @@ title: EUnS's blog
 
 
 # Build settings
-theme: jekyll-theme-merlot
+theme: minima
 
 
 plugins:
