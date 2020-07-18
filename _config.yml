@@ -20,7 +20,8 @@
 
 # Name of your site (displayed in the header)
 
-disqus_id: EUnS
+disqus: eeeuns
+#disqus_url: eeeuns.disqus.com
 
 author:
   name: EUnS
