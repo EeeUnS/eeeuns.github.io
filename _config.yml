@@ -21,6 +21,8 @@
 # Name of your site (displayed in the header)
 
 disqus: eeeuns
+disqus_shortname:    eeeuns
+
 #disqus_url: eeeuns.disqus.com
 
 author:
