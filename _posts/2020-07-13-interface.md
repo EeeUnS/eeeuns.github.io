@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Interface의 이해"
+title:  "Interface의 이해(미완)"
 date:   2020-07-14 22:53:01 +0900
 categories: oop
 ---
