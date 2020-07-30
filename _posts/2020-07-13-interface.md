@@ -51,7 +51,7 @@ public :
 
 최상위 부모클래스인 Person의 자식클래스인 Person1, Person2을 각각 상속 받는 경찰과 검찰은 체포 할 수있는 특별한 메소드를 가지고 있다. 이 경우에 메소드가 해당 클래스가 따로 가지고 있게 하는 것은 해당 메소드를 가진 객체를 사용해야할때 따로따로 처리해줘야하는 불편함이 있다. 이때 interface를 사용해서 해당 인터페이스를 가지는 자료구조를 만듦으로서 묶어서 처리할 수 있다.
 
-```JAVA
+```java
 public interface IArrestable
 {
     void arrest(Person person);
