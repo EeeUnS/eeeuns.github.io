@@ -1,0 +1,130 @@
+---
+layout: post
+comments : true
+title:  "std::atomic_flag의 delete fuction 탐방기"
+date:   2020-01-01 22:53:01 +0900
+categories: jekyll update
+---
+
+[https://stackoverflow.com/questions/27314485/use-of-deleted-function-error-with-stdatomic-int]
+​
+
+`모던 C++로 배우는 동시성 프로그래밍`  책 따라서 예제 코드를 쓰고 돌려보고있었다.
+
+```c++
+class Spinlock
+{
+public:
+	Spinlock();
+	~Spinlock();
+	void lock();
+private:
+	std::atomic_flag flag
+public:
+	void unlock();
+};
+
+Spinlock::Spinlock()  : flag(ATOMIC_FLAG_INIT)//c2280 error
+{
+	;
+}
+
+Spinlock::~Spinlock()
+{
+}
+void Spinlock::lock()
+{
+	while (flag.test_and_set());
+}
+
+void Spinlock::unlock()
+{
+	flag.clear();
+}
+```
+여기서 `delete function` 에러가 떴다.
+
+​
+
+아니 왜 예제 코드를 그대로 하는데 에러가 뜨냐고
+
+
+찾아보다가 결국 라이브러리를 뜯어보게되었다.
+
+​
+
+```c++
+// STRUCT atomic_flag
+#define ATOMIC_FLAG_INIT \
+    {}
+struct atomic_flag { // flag with test-and-set semantics
+    bool test_and_set(const memory_order _Order = memory_order_seq_cst) noexcept {
+        return _Storage.exchange(true, _Order) != 0;
+    }
+
+    bool test_and_set(const memory_order _Order = memory_order_seq_cst) volatile noexcept {
+        return _Storage.exchange(true, _Order) != 0;
+    }
+
+    void clear(const memory_order _Order = memory_order_seq_cst) noexcept {
+        _Storage.store(false, _Order);
+    }
+
+    void clear(const memory_order _Order = memory_order_seq_cst) volatile noexcept {
+        _Storage.store(false, _Order);
+    }
+
+#ifdef __clang__ // TRANSITION, VSO#406237
+    constexpr atomic_flag() noexcept = default;
+#else // ^^^ no workaround / workaround vvv
+    atomic_flag() noexcept = default;
+#endif // TRANSITION, VSO#406237
+
+#if 1 // TRANSITION, ABI
+    atomic<long> _Storage;
+#else // ^^^ don't break ABI / break ABI vvv
+    atomic<bool> _Storage;
+#endif // TRANSITION, ABI
+};
+```
+매크로로 정의된 `ATOMIC_FLAG_INIT`  이건 그냥 {} 였고
+
+atomic_flag는 atomic을 변수로 가지는 구조체였다.
+
+따라서 
+
+```c++
+atomic_flag flag({});
+```
+
+atomic쪽 삭제된 함수를 불러서 문제가 발생하는것.
+
+```c++
+atomic_flag() noexcept = default;
+atomic(const atomic&) = delete;
+```
+
+뇌피셜의 추론에 의하면 {} 이 아마 암시적으로 atomic으로 형변환이 되어서 atomic 복사생성자를 부르는것같다.
+
+표준이 뒤에 바뀐것도 아닌데 일단 예제 코드는 틀렸고 해결책은 이니셜라이즈는 비워두고 초기화에 아무런 손을 대지않고 default를 부르게하거나 `ATOMIC_FLAG_INIT`을 억지로 쓰려면 이렇게 하는게 정답이었다.
+
+```c++
+class Spinlock
+{
+public:
+	Spinlock();
+	~Spinlock();
+	void lock();
+private:
+	std::atomic_flag flag = ATOMIC_FLAG_INIT;
+public:
+	void unlock();
+};
+```
+C++11 문법인 대입이 답이었다. 아무래도 코드에 거부감이 좀 있다. 스트럭트, 클래스는 말그대로 형식인데 static도아닌데 여기에 값을 대입을 해놓는다니.
+
+처음에는 이거 옛날 C++표준에선 적용이 안되는건데.라고 생각을했지만 atomic자체가 C++11에서부터 지원을 해주는것이기에 상관이 없었던거다.
+
+이니셜라이저에서는 대입연산을 못쓰기때문에  ATOMIC_FLAG_INIT는 아무짝에도 쓸모없고 atomic을 쓰려고했더니 에러만 불러서 애먹인 놈이 되었다.
+​
+예제코드와의 문제는 MSVC의 구현상 문제로 생각된다.
