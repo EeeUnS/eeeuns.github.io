@@ -173,17 +173,11 @@ github blog 세팅은 굉장히 풀어져있는 자료정보가 많기에 각자
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
   </script>
 ```
-2. _layouts 폴더 밑의 default.html 맨밑에 Mathjax.html을 인클루드한다. 이때 body문 안에서 위에 지정하는것이아닌 제일 마지막에 인클루드를 해준다.
+2. _layouts 폴더 밑의 default.html 맨밑에 Mathjax.html을 인클루드한다. 이때 body문 안에서 위쪽에 지정하는것이아닌 제일 마지막에 인클루드를 해준다.
 
-```html
-  <body>
-...
-    <!-- {% include mathjax_support.html %} -->
-  </body>
 
-</html>
-```
-해당주석을 풀것.
+
+![image](/assets/img/githubblog/htmlfile.png)
 
 3. 마크다운을 kramdown로 세팅할 것. kramdown의 math blocks가 $$처리를 알아서 해준다.
 
