@@ -2,7 +2,7 @@
 layout: post
 title:  "안드로이드 장치 드라이버에 대한 효과적 취약점 탐지 기법"
 date:   2020-05-23 21:53:01 +0900
-categories: paper
+tag: paper
 ---
 
 # [안드로이드 장치 드라이버에 대한 효과적 취약점 탐지 기법](http://www.dbpia.co.kr/Journal/articleDetail?nodeId=NODE07049996)

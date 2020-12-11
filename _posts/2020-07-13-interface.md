@@ -2,7 +2,7 @@
 layout: post
 title:  "Interface의 이해"
 date:   2020-07-14 22:53:01 +0900
-categories: oop
+tag: oop
 ---
 
 # 인터페이스

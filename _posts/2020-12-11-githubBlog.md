@@ -2,7 +2,7 @@
 layout: post
 title:  "github blog와 latex"
 date:   2020-12-11 02:26:01 +0900
-categories: paper
+tag: paper
 ---
 
 [2020 한국텍학회 제13차 정기총회 및 학술대회](http://www.ktug.org/xe/index.php?mid=KTUG_open_board&document_srl=239863)
