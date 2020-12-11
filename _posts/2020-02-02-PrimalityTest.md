@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "2. PrimalityTest"
+title:  "2 PrimalityTest"
 date:   2020-02-02 01:53:01 +0900
 tag: math algorithm
 ---

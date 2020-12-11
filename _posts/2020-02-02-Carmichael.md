@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "4. Carmichael function"
+title:  "4 Carmichael function"
 date:   2020-02-02 03:53:01 +0900
 tag: math algorithm
 ---
