@@ -178,11 +178,12 @@ github blog 세팅은 굉장히 풀어져있는 자료정보가 많기에 각자
 ```html
   <body>
 ...
-    {% include mathjax_support.html %}
+    <!-- {% include mathjax_support.html %} -->
   </body>
 
 </html>
 ```
+해당주석을 풀것.
 
 3. 마크다운을 kramdown로 세팅할 것. kramdown의 math blocks가 $$처리를 알아서 해준다.
 
