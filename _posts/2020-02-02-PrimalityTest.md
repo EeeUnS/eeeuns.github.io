@@ -2,8 +2,7 @@
 layout: post
 title:  "2. PrimalityTest"
 date:   2020-02-02 01:53:01 +0900
-tag: math
-use_math : true
+tag: math algorithm
 ---
 
 소수 판별법

@@ -2,7 +2,7 @@
 layout: post
 title:  "안드로이드 장치 드라이버에 대한 효과적 취약점 탐지 기법"
 date:   2020-05-23 21:53:01 +0900
-tag: paper
+tag: android secure
 ---
 
 # [안드로이드 장치 드라이버에 대한 효과적 취약점 탐지 기법](http://www.dbpia.co.kr/Journal/articleDetail?nodeId=NODE07049996)
@@ -105,7 +105,7 @@ Control, MAC)[14] 등의 진보된 접근제어 기술이 도입
     - Code-based + Target binary-based analysis
     - Analysis of code that is reverse engineered
 - Dynamic
-    - Virtual /assets/img analysis
+    - Virtual /images/ analysis
     - Runtime analysis
     - Runtime + Reverse engineered code analysis
 
@@ -116,11 +116,11 @@ Control, MAC)[14] 등의 진보된 접근제어 기술이 도입
 <!--
 <img src="이미지 url" width="원하는 크기">
 
-/assets/img/test/test-01.png
+/images//test/test-01.png
 -->
 
 
-<img src="/assets/img/0523/img17.jpg" width="60%">
+<img src="/images//0523/img17.jpg" width="60%">
 
 
 정적 분석 방법은 알려진 취약점 혹은 규칙에 따라서
@@ -147,7 +147,7 @@ Control, MAC)[14] 등의 진보된 접근제어 기술이 도입
 
 ### 동적 분석 방법
 
-<img src="/assets/img/0523/img19.jpg" width="60%">
+<img src="/images//0523/img19.jpg" width="60%">
 
 
 일반적인 동적 분석 방법은 런타임에 다양한 입력값
@@ -190,8 +190,8 @@ Fuzzer core에서는 입력된 파라미터에 따라서 시스템
 -----
 
 
-<img src="/assets/img/0523/img26.jpg" width="60%"> 그림 4
-<img src="/assets/img/0523/img28.jpg" width="60%"> 그림 5
+<img src="/images//0523/img26.jpg" width="60%"> 그림 4
+<img src="/images//0523/img28.jpg" width="60%"> 그림 5
 
 나타난 코드에서 결국 “copy_from_user”
 함수가 사용되는데, 이는 시스템 권한의 커널 모듈에서
@@ -211,7 +211,7 @@ task의 내용은 그림 5와 같이 정의되어 있다.
 하였다.
 
 
-<img src="/assets/img/0523/img26.jpg" width="60%"> 그림 6
+<img src="/images//0523/img26.jpg" width="60%"> 그림 6
 
 
 해당 취약점에 대한 동적 분석에서는 IOCTL대상 디

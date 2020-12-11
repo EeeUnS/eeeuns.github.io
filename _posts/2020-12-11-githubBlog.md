@@ -2,7 +2,7 @@
 layout: post
 title:  "github blog와 latex"
 date:   2020-12-11 02:26:01 +0900
-tag: paper
+tag: latex
 ---
 
 [2020 한국텍학회 제13차 정기총회 및 학술대회](http://www.ktug.org/xe/index.php?mid=KTUG_open_board&document_srl=239863)
@@ -42,7 +42,7 @@ tag: paper
 ### Naver Blog에서 수식쓰기
 에디터 자체에서 수식기능을 지원
 
-![image](/assets/img/githubblog/naver1.png)
+![image](/images//githubblog/naver1.png)
 
 - Tex을 몰라도 사용가능
 - 텍 문법을 어느정도 그대로 사용가능
@@ -50,7 +50,7 @@ tag: paper
 - 수식하나하나 칠때마다 한글과 비슷하게 수식기능을 따로따로 적용해야함(수식을 많이 쓸경우 불편)
 
 
-![image](/assets/img/githubblog/naver2.png)
+![image](/images//githubblog/naver2.png)
 
 
 ### Image
@@ -59,12 +59,12 @@ tag: paper
 2. 진짜 pdf를 그대로 이미지로 변환후 첨부하기
 
 
-![image](/assets/img/githubblog/image1.png)
+![image](/images//githubblog/image1.png)
 
 하지만 pdf 나온 파일은 컴퓨터로 보기엔 많은 공백이 생겨서 가독성에 문제가 많음.
 
 
-![image](/assets/img/githubblog/image2.png)
+![image](/images//githubblog/image2.png)
 
 - 여기에 대한 해결책으로 ebook 용으로 만든 템플릿을 조금 수정한 [텍 파일 template](https://github.com/EeeUnS/github-blog-and-latex/blob/master/ebook.tex) 제안.
 - [해당 파일 원본](https://www.latextemplates.com/template/ebook)
@@ -95,24 +95,24 @@ tistory, blogger와 직접 서비스 하는 사이트/블로그같은경우는 t
 
 - Mathjax : 
 
-![image](/assets/img/githubblog/mathjax.png)
+![image](/images//githubblog/mathjax.png)
 
 - Katex : 
 
-![image](/assets/img/githubblog/katex.png)
+![image](/images//githubblog/katex.png)
 
 
 mathjax 는 마우스 우클릭시 여러가지 추가지원이 있으며 수식이 페이지 규격을 넘어서서 나타난다.
 
-![image](/assets/img/githubblog/mathjax2.png)
+![image](/images//githubblog/mathjax2.png)
 
-![image](/assets/img/githubblog/mathjax3.png)
+![image](/images//githubblog/mathjax3.png)
 
 katex는 수식이 페이지 규격을 넘어서면 다음 줄에 이어서 나타난다.
 
 
 
-![image](/assets/img/githubblog/katex2.png)
+![image](/images//githubblog/katex2.png)
 
 
 
@@ -173,11 +173,11 @@ github blog 세팅은 굉장히 풀어져있는 자료정보가 많기에 각자
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
   </script>
 ```
-2. _layouts 폴더 밑의 default.html 맨밑에 Mathjax.html을 인클루드한다. 이때 body문 안에서 위쪽에 지정하는것이아닌 제일 마지막에 인클루드를 해준다.
+2. _layouts 폴더 밑의 default.html 맨밑에 Mathjax.html을 인클루드한다. 이때 body문 안에서 위에 지정하는것이아닌 제일 마지막에 인클루드를 해준다.
 
 
+![image](/images//githubblog/htmlfile.png)
 
-![image](/assets/img/githubblog/htmlfile.png)
 
 3. 마크다운을 kramdown로 세팅할 것. kramdown의 math blocks가 $$처리를 알아서 해준다.
 

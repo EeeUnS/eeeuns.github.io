@@ -2,8 +2,7 @@
 layout: post
 title:  "String Matching"
 date:   2020-06-03 19:26:01 +0900
-tag: paper
-use_math : true
+tag: algorithm
 ---
 
 
@@ -37,7 +36,7 @@ $$T[k+m-1]$$까지 하나하나 $$P$$와 맞는지 확인하는것이다.
 
 -   매칭시간 $$O((n-m+1)m)$$
 
-![image](/assets/img/StringMatching/pic1.PNG)
+![image](/images//StringMatching/pic1.PNG)
 
 $$d = 10$$, $$q = 13$$에 대한 라빈카프 알고리즘에 대한 수행을 나타낸다.
 (a)는 \`\`31415"에 대한 t가 7인모습 (b)는 숫자가 겹치지만 서로 다른
@@ -119,7 +118,7 @@ CLRS의 번역본을 그대로 들고왔습니다.
 
 오토마타 내용 통째로 생략
 
-![image](/assets/img/StringMatching/pic2.PNG)
+![image](/images//StringMatching/pic2.PNG)
 
 $$|\Sigma|  = 3$$ \`\`a,b,c", $$m = 7$$에 대한 스트링 매칭 오토마타 (a)
 패턴 $$P$$에 대한 상태 오토마타 (b) 상태표 (c) 상태표에 따른
@@ -182,7 +181,7 @@ $$a$$를 뽑는다. 현재 상태 $$q$$의 문자열 + ’a’가 임의의 상�
 비교방식을 개선했다고 볼 수 있다. 전처리를 통해 계산한 $$\pi[1..m]$$
 배열을 사용하며, 매칭이 실패했을때, $$\pi$$배열을 사용한다.
 
-![image](/assets/img/StringMatching/pic3.PNG)
+![image](/images//StringMatching/pic3.PNG)
 
 그림과 같이 \`\`ababaca“패턴을 문자열과 비교한다고 생각해보자.
 \`\`ababa”까지 맞지만 ’c’와 문자가 일치하지 않는다. 이때 앞의 문자열은
@@ -190,7 +189,7 @@ $$a$$를 뽑는다. 현재 상태 $$q$$의 문자열 + ’a’가 임의의 상�
 근접하고 일치하는 수가 적은 $$P$$의 패턴이 \`\`aba“임을 알수있는 배열
 $$\pi[]$$를 이용해서 다시 비교하지 않아도 \`\`aba”까지 일치함을 알수있다.
 
-![image](/assets/img/StringMatching/pic4.PNG)
+![image](/images//StringMatching/pic4.PNG)
 
 (a)는 패턴 $$P$$와 전처리한 $$\pi[1..7]$$ (b)는 $$P[5]$$에서 다음 문자가
 매칭이 틀렸을때 그에 따른 $$\pi$$값과 되돌아가는 순서를

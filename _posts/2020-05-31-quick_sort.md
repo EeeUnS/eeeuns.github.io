@@ -2,8 +2,7 @@
 layout: post
 title:  "Introduction to Quick Sort"
 date:   2020-05-31 21:53:01 +0900
-tag: paper
-use_math : true
+tag:  math algorithm
 ---
 
 소개
@@ -58,7 +57,7 @@ PARTITION 프로시저의 시간복잡도는 $$\Theta(n)$$이다.
 
 
 
-![Image Alt 텍스트](/assets/img/quicksort/q1.PNG)
+![Image Alt 텍스트](/images//quicksort/q1.PNG)
 
 quick sort 작동 예시@reference1
 
@@ -95,7 +94,7 @@ $$\sum_{k=1}^{n} \dfrac{1}{k} = \Theta(\lg n)$$
 
 $$\int_{m-1}^{n}f(x)dx \le \sum_{k=m}^n f(k) \le \int_{m}^{n+1}f(x)dx$$
 
-![증가함수의 대소비교@reference1](/assets/img/quicksort/q5.PNG)
+![증가함수의 대소비교@reference1](/images//quicksort/q5.PNG)
 
 증가함수의 대소비교@reference1
 
@@ -159,7 +158,7 @@ $$\begin{aligned}
 
 이때의 비용을 나타낸 재귀함수는 $$T(n) = 2T(\dfrac{n}{2}) + cn$$ 이다.
 
-![quick sort 최선의 분할 케이스 재귀트리@reference1](/assets/img/quicksort/q2.PNG)
+![quick sort 최선의 분할 케이스 재귀트리@reference1](/images//quicksort/q2.PNG)
 
 quick sort 최선의 분할 케이스 재귀트리@reference1
 
@@ -178,7 +177,7 @@ $$\Theta(n \lg n)$$이다. [^2]
 
 ### 항상 9:1로 분할하는 경우
 
-![9:1로 분할하는 재귀 트리@reference1](/assets/img/quicksort/q9.PNG)
+![9:1로 분할하는 재귀 트리@reference1](/images//quicksort/q9.PNG)
 
 9:1로 분할하는 재귀 트리@reference1
 
@@ -194,7 +193,7 @@ $$T(n) \le T\left(\dfrac{9n}{10}\right) + T\left(\dfrac{n}{10}\right)+ cn$$
 
 ### 최악의 경우와 최선의 경우가 번갈아 나타나는 경우
 
-![최악,최선이 번갈아 나타나는 재귀트리@reference1](/assets/img/quicksort/q3.PNG)
+![최악,최선이 번갈아 나타나는 재귀트리@reference1](/images//quicksort/q3.PNG)
 
 최악,최선이 번갈아 나타나는 재귀트리@reference1
 
@@ -383,12 +382,12 @@ Hoare’s Partition은 실질적인 측면에서볼때 활용도가
 
 다음의 실제 테스트 결과를 봐도 알 수 있다.[^5]
 
-![image]({/assets/img/quicksort/q7.png)
+![image]({/images//quicksort/q7.png)
 
 Quick sort의 캐시 히트율
 ========================
 
-![image](/assets/img/quicksort/quick1.PNG)
+![image](/images//quicksort/quick1.PNG)
 
 다음은 Radix sort(기수 정렬)과 Quick sort의 입력 n에 따른 수행 명령어
 수/n를 나타낸 것이다. 기수 정렬의 시간복잡도는 $$O(n)$$이나 최고차항의
@@ -401,8 +400,8 @@ Quick sort의 캐시 히트율
 나와있는걸 생각해볼때 값이 정말 커지면 결국에는 시간복잡도에 따라
 기수정렬이 더 빠름이 명확할것으로 예상한다.
 
-![image](/assets/img/quicksort/quick2.PNG) 
-![image](/assets/img/quicksort/quick3.PNG)
+![image](/images//quicksort/quick2.PNG) 
+![image](/images//quicksort/quick3.PNG)
 
 
 Comparing Quicksort and Radix
@@ -457,7 +456,7 @@ $$O(n \log n)$$이지만 최선,최악에대해서 비교적 평균적인 수행
 다음은 선택정렬을 수행하는 $$n$$에따른 수행시간이다. 여기서 테스트
 케이스의 $$N =10000$$ 이다.
 
-![삽입정렬 수행의 분할크기 n에 따른 퀵정렬수행시간@reference3](/assets/img/quicksort/q6.PNG)
+![삽입정렬 수행의 분할크기 n에 따른 퀵정렬수행시간@reference3](/images//quicksort/q6.PNG)
 
 삽입정렬 수행의 분할크기 n에 따른 퀵정렬수행시간@reference3
 
@@ -482,7 +481,7 @@ $$O(n \log n)$$이지만 최선,최악에대해서 비교적 평균적인 수행
 모은다 그런후에 재귀의 범위를 왼쪽 오른쪽으로만 한다. 다음은 Dijstra가
 제안한 해답이다. 코드는 c++로 작성되어 있다.
 
-![3-way-partitioning 작동 방식 @reference4](/assets/img/quicksort/q10.PNG)
+![3-way-partitioning 작동 방식 @reference4](/images//quicksort/q10.PNG)
 
 3-way-partitioning 작동 방식 @reference4
 
@@ -516,7 +515,7 @@ $$O(n \log n)$$이지만 최선,최악에대해서 비교적 평균적인 수행
 
 다음은 J. Bentley과 D. McIlroy 제안한 좀더 빠른 의사코드이다.
 
-![Fast 3-way partitioning 작동 방식@reference4](/assets/img/quicksort/q11.PNG)
+![Fast 3-way partitioning 작동 방식@reference4](/images//quicksort/q11.PNG)
 
 Fast 3-way partitioning 작동 방식@reference4
 

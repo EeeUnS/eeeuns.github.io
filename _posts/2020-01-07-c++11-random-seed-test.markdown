@@ -58,14 +58,14 @@ n = 1000000 첫번째보다 n은 10배 작음.
 ## 3. 시드생성을 전역에
 
 다음코드를 전역과 메인함수에 넣고,
-{% highlight c++ linenos %}
+```c++
 std::mt19937_64 rng;
 rng.seed(std::random_device()());
-{% endhighlight  %}
+```
 
-{% highlight c++ linenos %}
+```c++
 std::uniform_int_distribution<int>distribution(start, end)
-{% endhighlight  %}
+```
 이것만 재귀에 넣어서 구했을때
 n은 두번째와 동일
 
