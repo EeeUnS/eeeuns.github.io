@@ -13,4 +13,5 @@ permalink: /about/
 - open source contribute : 
   - [CLRS solution](https://github.com/walkccc/CLRS/pull/213/commits)
   - [android-kernel-exploitation](https://github.com/cloudfuzz/android-kernel-exploitation/issues/4)
+- [CLRS blog](https://eeeuns.github.io/Introduction-To-Algorithms-Cpp-code/)
 <!-- [jekyll-organization]: https://github.com/jekyll -->
