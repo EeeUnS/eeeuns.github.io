@@ -147,7 +147,6 @@ github blog 세팅은 굉장히 풀어져있는 자료정보가 많기에 각자
 - [MathJax v3 in Jekyll](https://quuxplusone.github.io/blog/2020/08/19/mathjax-v3-in-jekyll/)
 
 1. _includes 폴더 밑에 Mathjax.html 파일을 만들고 다음 내용을 넣는다.
-
 ```html
 <script type="text/javascript">
   window.MathJax = {
@@ -174,11 +173,7 @@ github blog 세팅은 굉장히 풀어져있는 자료정보가 많기에 각자
   </script>
 ```
 2. _layouts 폴더 밑의 default.html 맨밑에 Mathjax.html을 인클루드한다. 이때 body문 안에서 위에 지정하는것이아닌 제일 마지막에 인클루드를 해준다.
-
-
-![image](/images//githubblog/htmlfile.png)
-
-
+![image](/images//githubblog/htmlfile.PNG)
 3. 마크다운을 kramdown로 세팅할 것. kramdown의 math blocks가 $$처리를 알아서 해준다.
 
 
