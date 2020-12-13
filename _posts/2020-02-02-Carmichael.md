@@ -25,16 +25,16 @@ ver 1.
 
 $$\lambda(n) = \operatorname{lcm}(\phi(p_1^{e_1}), \ldots, \phi(p_r^{e_r})).$$
 
-ver 2.
+ver 2. 
 
 
 $$
 \begin{aligned}
-\lambda(2^{\alpha}) &= \phi(2^{\alpha}) \text{ if $$a = 0, 1, 2$$;} \\
+\lambda(2^{\alpha}) &= \phi(2^{\alpha}) \text{ if a = 0, 1, 2;} \\
 \lambda(2^{\alpha}) &= \frac{1}{2}\phi(2^{\alpha})
-\text{ if $$a > 2$$;} \\
+\text{ if a > 2 ;} \\
 \lambda(p^{\alpha}) &= \phi(p^{\alpha})
-\text{ if $$p$$ is an odd prime;} \\
+\text{ if p is an odd prime;} \\
 \lambda(2^{\alpha} p_1^{\alpha_1} p_2^{\alpha_2} \cdots p_n^{\alpha_n}) 
 &= \text{lcm}(
     \lambda(2^{\alpha}),
@@ -120,11 +120,11 @@ $$\lambda(m)$$ as follows:
 
 $$
 \begin{aligned}
-\lambda(2^{\alpha}) &= \phi(2^{\alpha}) \text{ if $$a = 0, 1, 2$$;} \\
+\lambda(2^{\alpha}) &= \phi(2^{\alpha}) \text{ if a = 0, 1, 2;} \\
 \lambda(2^{\alpha}) &= \frac{1}{2}\phi(2^{\alpha})
-                                               \text{ if $$a > 2$$;} \\
+                                               \text{ if a > 2;} \\
 \lambda(p^{\alpha}) &= \phi(p^{\alpha})
-                                   \text{ if $$p$$ is an odd prime;} \\
+                                   \text{ if p is an odd prime;} \\
 \lambda(2^{\alpha} p_1^{\alpha_1} p_2^{\alpha_2} \cdots p_n^{\alpha_n}) 
 &= \text{lcm}(
     \lambda(2^{\alpha}),
