@@ -6,6 +6,11 @@ tag: math algorithm
 ---
 
 
+- [기초정수론](https://eeeuns.github.io/2020/02/01/number-theory/)
+- [PrimalityTest](https://eeeuns.github.io/2020/02/01/primalitytest/)
+- [CRT](https://eeeuns.github.io/2020/02/01/crt/)
+- [carmichael function](https://eeeuns.github.io/2020/02/01/carmichael/)
+- [RSA](https://eeeuns.github.io/2020/02/01/rsa/)
 
 
 ===================
@@ -23,19 +28,21 @@ $$\lambda(n) = \operatorname{lcm}(\phi(p_1^{e_1}), \ldots, \phi(p_r^{e_r})).$$
 ver 2.
 
 
-$$\begin{aligned}
+$$
+\begin{aligned}
 \lambda(2^{\alpha}) &= \phi(2^{\alpha}) \text{ if $$a = 0, 1, 2$$;} \\
 \lambda(2^{\alpha}) &= \frac{1}{2}\phi(2^{\alpha})
-                                               \text{ if $$a > 2$$;} \\
+\text{ if $$a > 2$$;} \\
 \lambda(p^{\alpha}) &= \phi(p^{\alpha})
-                                   \text{ if $$p$$ is an odd prime;} \\
+\text{ if $$p$$ is an odd prime;} \\
 \lambda(2^{\alpha} p_1^{\alpha_1} p_2^{\alpha_2} \cdots p_n^{\alpha_n}) 
 &= \text{lcm}(
     \lambda(2^{\alpha}),
     \lambda(p_1^{\alpha_1}),
     \lambda(p_2^{\alpha_2}), \ldots, \lambda(p_n^{\alpha_n}
     )
-)\end{aligned}$$
+)\end{aligned}
+$$
 
 
 [ref](http://www.gutenberg.org/files/13693/13693-pdf.pdf)
@@ -111,7 +118,8 @@ $$a^{\frac{1}{2}\phi(2^{\alpha})} \equiv 1 \bmod 2^{\alpha} \text{ if } a > 2.$$
 Now in terms of the $$\phi$$-function let us define a new function
 $$\lambda(m)$$ as follows:
 
-$$\begin{aligned}
+$$
+\begin{aligned}
 \lambda(2^{\alpha}) &= \phi(2^{\alpha}) \text{ if $$a = 0, 1, 2$$;} \\
 \lambda(2^{\alpha}) &= \frac{1}{2}\phi(2^{\alpha})
                                                \text{ if $$a > 2$$;} \\
@@ -123,7 +131,8 @@ $$\begin{aligned}
     \lambda(p_1^{\alpha_1}),
     \lambda(p_2^{\alpha_2}), \ldots, \lambda(p_n^{\alpha_n}
     )
-)\end{aligned}$$
+)\end{aligned}
+$$
 
 $$2, p_1, p_2, \ldots, p_n$$ being different primes.
 

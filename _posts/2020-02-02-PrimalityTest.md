@@ -5,6 +5,13 @@ date:   2020-02-02 01:53:01 +0900
 tag: math algorithm
 ---
 
+- [기초정수론](https://eeeuns.github.io/2020/02/01/number-theory/)
+- [PrimalityTest](https://eeeuns.github.io/2020/02/01/primalitytest/)
+- [CRT](https://eeeuns.github.io/2020/02/01/crt/)
+- [carmichael function](https://eeeuns.github.io/2020/02/01/carmichael/)
+- [RSA](https://eeeuns.github.io/2020/02/01/rsa/)
+
+
 소수 판별법
 ===========
 

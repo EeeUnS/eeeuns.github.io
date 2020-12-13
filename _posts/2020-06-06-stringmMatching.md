@@ -5,6 +5,10 @@ date:   2020-06-03 19:26:01 +0900
 tag: algorithm
 ---
 
+- The naive string-matching algorithm
+- The Rabin-Karp algorithm
+- String matching with finite automata
+- The Knuth-Morris-Pratt algorithm
 
 텍스트 $$T[1..n]$$
 
