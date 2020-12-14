@@ -116,16 +116,18 @@ $$\int_{1}^{n+1}f(x)dx =\ln (x+1) = \Omega(\ln x) \le \sum_{k=1}^n \dfrac{1}{k} 
 
 Indicator random variables
 
+
+
 $$\begin{aligned}
     I\left\{ A \right\} =  
 \begin{cases}
-    1 &\mbox{( $$H$$ 발생)} \\
-    0 &\mbox{( $$\bar{H}$$ 발생)}
+    1 &    (H \mbox{발생}) \\
+    0 & ( \bar{H} \mbox{발생})
 \end{cases}    \end{aligned}$$
 
 $$\begin{aligned}
     E[X_A] &=  E[I \left\{ A \right\} ] \\
-    &= 1 \times \Pr (A) + 0 \times \Pr(\bar{A}) \text{\footnotemark} \\
+    &= 1 \times \Pr (A) + 0 \times \Pr(\bar{A}) \\
     &=\Pr (A)     \end{aligned}$$
 
 대략적인 복잡도 분석
@@ -382,7 +384,7 @@ Hoare’s Partition은 실질적인 측면에서볼때 활용도가
 
 다음의 실제 테스트 결과를 봐도 알 수 있다.[^5]
 
-![image]({/images//quicksort/q7.png)
+![image](/images/quicksort/d.png)
 
 Quick sort의 캐시 히트율
 ========================
