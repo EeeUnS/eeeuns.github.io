@@ -14,6 +14,8 @@ tag: latex
 
 [해당 발표 repo](https://github.com/EeeUnS/github-blog-and-latex)
 
+[minima template + mathjax를 적용한 블로그 템플릿](https://github.com/EeeUnS/minimaMathjaxTemplate)
+
 끝의 mathjax 적용은 최신에 맞춰서 ver 3.0으로 업데이트 한것을 기술
 
 
