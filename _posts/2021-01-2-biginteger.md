@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "biginteger "
+title:  "biginteger[작성중]"
 date:   2021-01-02 02:26:01 +0900
 tag: etc
 ---
