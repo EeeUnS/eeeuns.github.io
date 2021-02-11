@@ -9,6 +9,9 @@ tag: etc
 
 - 사용 환경 : wsl2 ubuntu 20.04 TLS
 
+wsl 세팅은 다음을 [참고](https://youtu.be/anZmL2bs-xY) 
+
+
 참고 사이트
 - [다음 사이트를 기준으로 시작하였음](https://bowbowbow.tistory.com/9)
 - [같이 참고한 사이트](https://blog.koriel.kr/how-to-install-pintos/)
@@ -79,6 +82,9 @@ pintos 파일 561 줄쯤에 보면 `user_shortcut: keys=ctrlaltdel` 줄을   `ke
 
 해결 
 ?
+
+
+일단 원래는 utils 폴더에서 make 를 하여 실행되는지 확인하여야하는데 일단 이부분은 make가 되지않았고 make를 하지않아도 일단은 진행되기에 그대로 진행할 예정.
 
 
 
