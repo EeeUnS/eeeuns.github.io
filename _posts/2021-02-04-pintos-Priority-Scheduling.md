@@ -144,7 +144,7 @@ list_insert_ordered(&sleeping_list,&cur_thread -> elem,order_by_wakeup_tick,NULL
 ready_list에 thread가 들어가는 부분을 모두 삽입정렬로 들어가게 바꾸었다.
 ```c
 /* list_less_function for ready_list_insert_ordered. Inserting thread in order by larger priority values. */
-bool order_by_priority(struct list_elem* a, struct list_elem* b)
+bool thread_order_by_priority(struct list_elem* a, struct list_elem* b)
 {
   struct thread* thread_a = list_entry(a,struct thread,elem);
   struct thread* thread_b = list_entry(b,struct thread,elem);
@@ -152,11 +152,22 @@ bool order_by_priority(struct list_elem* a, struct list_elem* b)
   return thread_a->priority > thread_b->priority;
 }
 
+void
+thread_unblock (struct thread *t) 
+{
+  enum intr_level old_level;
 
-thread_unblock...
-thread_yield
-  list_insert_ordered(&ready_list, &t->elem, order_by_priority, NULL);
+  ASSERT (is_thread (t));
 
+  old_level = intr_disable ();
+
+  ASSERT (t->status == THREAD_BLOCKED);
+
+  list_insert_ordered(&ready_list, &t->elem, thread_order_by_priority, NULL);
+  t->status = THREAD_READY;
+
+  intr_set_level (old_level);
+}
 
 /* Sets the current thread's priority to NEW_PRIORITY. */
 void
@@ -169,7 +180,6 @@ thread_set_priority (int new_priority)
     thread_yield();
 }
 ```
-
 
 ```c
 tid_t
@@ -204,7 +214,7 @@ FAIL tests/threads/priority-sema
 FAIL tests/threads/priority-condvar
 FAIL tests/threads/priority-donate-chain
 ```
-donate관련 /sema conditionvariable 으로 딱 나눠진 두부분만 통과를 못한것을 알수있다.
+donate관련 /sema condition variable 으로 딱 나눠진 두부분만 통과를 못한것을 알수있다.
 donate가 가장 복잡해 보이므로 sema cond쪽을 먼저 해결하려했다.
 
 2.를 해결하려 보니 synch 에 sema, lock, condi 가 모두 들어있더라. 또 구조를 보니 sema 쪽에 코드를 잘 짜면 lock, condi가 모두 sema를 응용하기에 같이 해결될거라 생각했다. 
@@ -227,10 +237,11 @@ sema_up (struct semaphore *sema)
   thread_yield();
 }
 ```
-thread_yield 에서 추가적인 intr_disable()을 호출하기에 이것이 이미 disable 된 상태에서 호출하는것이 문제가 없는가 했지만 fail을 하는등하는 일은 없지만 세마포어는 확실하게 up된상태에서 thread_yield를 호출해야한다 그렇지않으면 영원히 기다리기만한다.
+thread_yield 에서 추가적인 intr_disable()을 호출하기에 이것이 이미 disable 된 상태에서 호출하는것이 문제가 없는가 생각했으나 fail을 하는등 그러지는 않았다.그런데 세마포어는 확실하게 up된상태에서 thread_yield를 호출해야한다 그렇지않으면 영원히 기다리기만한다.
+
 사실 unblock 된 상태에서 priority가 현재 스레트보다 더 큰게 확실할때만 thread_yield를 불러야 되는거 아닌가 생각했지만 내부 함수를 뜯어보니 로직이 현재 스레드를 ready_list로 집어넣는다(위에서 고쳤으므로 priority로 정렬됨이 보장된다) ready_list에서 새로 꺼낸다.
 따라서 unblock여부에 상관없이 적절한것이 알아서 튀어나온다.
-조금더 효율을 중시한다면 다음과 같이 짤 수도있겠지만 코드의 간편화를 아래가아닌 위해서 위와같이 코드를 하기로 정했다.
+조금 더 효율을 중시한다면 다음과 같이 짤 수도있겠지만 코드의 간편화를 아래가아닌 위해서 위와 같이 코드를 하기로 정했다.
 
 ```c
 void
@@ -357,6 +368,8 @@ pass tests/threads/priority-condvar
 11.   msg ("Thread M finished."); m_thread_func함수 종료
 12.   msg ("Thread L finished."); l_thread_func함수 종료
 
+
+
 일단 lock쪽을 먼저 수정해주기로함. lock 구조체에 prev_holider_priority추가 초기화는 PRI_MAX로 
 
 
@@ -419,7 +432,7 @@ pass tests/threads/priority-condvar
 # nest/multiple
 
 
-자이제 남은 문제를 풀어보기 위해 multiple2 코드를 까서 해석해봤다.
+자 이제 남은 문제를 풀어보기 위해 multiple2 코드를 까서 해석해봤다.
 
 c(32)에게 lock A,B가 동시에 걸려있고 각각에 a(34),b(33) 이 기다리고있을때 A가 열리면은 c(33)이 되어야한다는것이다. 
 
