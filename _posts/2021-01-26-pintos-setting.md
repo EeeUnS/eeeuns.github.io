@@ -2,7 +2,7 @@
 layout: post
 title:  "pintos 세팅중 만난 에러들과 해결법"
 date:   2021-01-26 02:26:01 +0900
-tag: etc
+tag: pintos
 ---
 
 [원사이트](https://web.stanford.edu/class/cs140/projects/pintos/pintos.html)

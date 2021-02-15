@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "pintos-Priority-Scheduling[작성중]"
+title:  "pintos-Priority-Scheduling"
 date:   2021-02-08 02:26:01 +0900
-tag: etc
+tag: pintos
 ---
 
 busy wait는 내가 코드 짜는데 손을 아예 안댔기에 생략.
@@ -330,12 +330,72 @@ pass tests/threads/priority-condvar
 이제 donate쪽을 건드려보자.
 솔직히 고려할게 너무 많아서 어디서부터 손을 대야할지 모르겠다.
 
+대충 생각난 고려해야할걸 적어보자면.
+
+1. priority가 수정됨에 따라서 ready_list자체를 재정렬을 시켜줘야할 수 있음
+2. waiter에서 재정렬을 시켜줘야할 수 있음.
+3. 이전 priority로 돌아가기위한 정보가 필요함.
+
+혹시 세마포어에서 priority를 수정해줘야하나 싶어서 priority-donate-sema 코드를 봤는데 로직이 너무 복잡해서 옳은 결과를 보고 유추한 내가 생각하는 올바른 과정을 직접 풀어쓰기로했다.
+
+![image](/images/pintos/donatesema.png)
+
+1. create에서 thread를 생성 
+2. 이때 우선순위가 더 높으므로 l_thread_func를 실행.
+3. lock_acquire (&ls->lock);
+  msg ("Thread L acquired lock.");
+  sema_down에서 waiting 
+3. 1.과 마찬가지로 두번째 create가 실행됨으로 m_thread_func 실행 
+4. sema_down에서 wating 
+5. 1.과 마찬가지로 h_thread_func 실행 
+6. lock_acquire에서 lock대기 이때 high thread의 priority를 sema 대기중인 low에 donate 따라서 sema의 대기순서가 low가 우선이 됨.
+7. sema_up으로 low가 실행
+8.   msg ("Thread L downed semaphore.");
+  lock_release (&ls->lock); 가 실행되자마자
+9.  기존 우선순위가 더 높았던 h_thread_func로 넘어감. 
+10. sema_up (&ls->sema); 여기서 wating중이던 med가 풀리지만 우선순위가 낮기에 실행을 기다림  lock_release (&ls->lock);  msg ("Thread H finished."); h_thread_func함수 종료
+11.   msg ("Thread M finished."); m_thread_func함수 종료
+12.   msg ("Thread L finished."); l_thread_func함수 종료
+
+일단 lock쪽을 먼저 수정해주기로함. lock 구조체에 prev_holider_priority추가 초기화는 PRI_MAX로 
 
 
+```c
+void
+lock_acquire (struct lock *lock)
+{
+  ASSERT (lock != NULL);
+  ASSERT (!intr_context ());
+  ASSERT (!lock_held_by_current_thread (lock));
 
+  if (lock->holder != NULL && 
+          (lock->holder->priority < thread_get_priority ()))  /* knock - knock */
+    {
+      lock->prev_holider_priority = lock->prev_holider_priority < lock->holder->priority ?              
+                  lock->prev_holider_priority : lock->holder->priority;
+      lock->holder->priority = thread_get_priority ();
+      thread_sort_ready_list_by_priority();
+      thread_yield (); /* donate complete. */
+    }
 
+  sema_down (&lock->semaphore);
+  lock->holder = thread_current ();
 
+}
 
+void
+lock_release (struct lock *lock) 
+{
+  ASSERT (lock != NULL);
+  ASSERT (lock_held_by_current_thread (lock));
+
+  if(lock->prev_holider_priority != PRI_MAX)
+    lock->holder->priority = lock->prev_holider_priority;
+  lock->prev_holider_priority = PRI_MAX;
+  lock->holder = NULL;   
+  sema_up (&lock->semaphore);
+}
+```
 
 
 
@@ -354,3 +414,173 @@ pass tests/threads/priority-preempt
 pass tests/threads/priority-sema
 pass tests/threads/priority-condvar
 ```
+
+
+# nest/multiple
+
+
+자이제 남은 문제를 풀어보기 위해 multiple2 코드를 까서 해석해봤다.
+
+c(32)에게 lock A,B가 동시에 걸려있고 각각에 a(34),b(33) 이 기다리고있을때 A가 열리면은 c(33)이 되어야한다는것이다. 
+
+또 다른 nest또한 살펴보니 연쇄적인 lock 에대해서 업데이트를 모두 차근차근 시켜야 한다 아..
+결국 모든 lock의 정보를 lock이 열릴때 가지고 있어야 업데이트가 가능해보였다..
+아무리 생각해도 개별 thread에다가 lock에 대한 모든 정보를 처박아야 할것같았다.
+
+너무 끔찍하다.
+기존 코드를 다 들어내고 갈아엎어야한다. 대공사다.
+
+이거 고치면서 테스트 전체가 완전히 박살나거나 알수없는 이유로 ASSERT에 걸리거나 페이지 오류가 나는등 고생을 많이했다.
+
+또한 짜는 중간에도 설계자체를 두어번 갈아엎으면서 짰다.
+여기 코드는 최종적으로 정리된 코드들만 기술한다.
+
+thread 구조를 추가했다.
+```c
+int original_priority;              /* init thread priority of set priority*/
+struct list holding_locks;          /*lock -> holder == this thread*/
+struct lock* waiting_lock;          /* this thread waiting this lock*/
+```
+1. original_priority: priority가 바뀌지않는 원래 priority값이다. set함수에 의해서 변경되는 경우를 제외하고는 고정값이다.
+2. holding_locks : 현재 thread가 lock->holder로 있는 lock의 list이다. 이는 release시의 multiple을 해결하기위한 변수이다.
+3. waiting_lock : 현재 lock->holder가 따로있어 waiting하고 있는  lock이다. 이때 이 thread는 계속 해당 lock에서 waiting하고 있기에 waiting은 단 한개만이 존재한다. 
+
+lock을 list에 넣기위해서 lock구조체에도 추가를 해줬다
+```c
+struct list_elem elem;
+```
+
+생각보다 각각 해결할 부분이 명확하다. test코드를 보니 cond나 sema쪽을 신경쓸 필요는 없었다. 
+nest donation은 lock_acquire에서 처리하며 multiple은 lock_release에서 처리한다.
+
+```c
+void
+lock_acquire (struct lock *lock)
+{
+  ASSERT (lock != NULL);
+  ASSERT (!intr_context ());
+  ASSERT (!lock_held_by_current_thread (lock));
+
+  if (lock->holder != NULL)
+    {
+      thread_priority_donation_recursion (lock);
+      thread_set_waiting_lock (lock);
+      thread_yield ();
+    }
+
+  sema_down (&lock->semaphore);
+  thread_set_waiting_lock (NULL);
+  lock->holder = thread_current ();
+  thread_holding_locks_push_back(lock);
+}
+// thread.c
+void 
+thread_priority_donation_recursion (struct lock* lock)
+{
+  ASSERT (lock->holder != NULL);
+  ASSERT (lock != NULL);
+
+  /* knock - knock 
+  thread (in lock waiter) ----donate--- > lock->holder */
+  if (lock->holder->priority > thread_get_priority ())
+    return ;
+
+  lock->holder->priority = thread_get_priority ();
+
+  if (lock->holder->waiting_lock != NULL && 
+        lock->holder->waiting_lock->holder != NULL)
+      thread_priority_donation_recursion (lock->holder->waiting_lock);
+}
+```
+
+`thread_set_waiting_lock` 은 단순히 lock을 waiting_lock list에 넣는 함수이다. 
+단순히 thread_current를 불러서 직접 넣어도 한줄로 끝나는 작업이지만. class의 경우에는 setter를 부르면 되지만 C에서는 그것이 없는지라 어떻게 할까하다가 전체적인 코드를 보니 정해진 구조체 파일이 개별로 분류되어있는경우 구조체를 거의 class처럼 다루길래 이의 일관성을 유지하기 위해 분리하였다. `thread_holding_locks_push_back`도 같은 이유이다. 짜잘한 함수의 구현은 생략하겠다.
+
+```c
+void
+lock_release (struct lock *lock) 
+{
+  ASSERT (lock != NULL);
+  ASSERT (lock_held_by_current_thread (lock));
+  ASSERT (!list_empty (&thread_current ()->holding_locks));
+  ASSERT ( thread_current ()->priority >= thread_current ()->original_priority );
+
+  thread_holding_locks_remove(lock);
+  thread_restore_priority ();
+
+  lock->holder = NULL;   
+  sema_up (&lock->semaphore);
+}
+
+void
+thread_restore_priority(void)
+{
+  struct list_elem *lock_e;
+  struct list_elem *waiters_e;
+  struct lock *lock_tmp;
+  struct thread* waiting_thread;
+  int lock_max_priority = thread_current ()->original_priority;
+  
+  for (lock_e = list_begin (&thread_current ()->holding_locks); 
+        lock_e != list_end (&thread_current ()->holding_locks);
+         lock_e = list_next (lock_e))
+    {
+      lock_tmp = list_entry (lock_e, struct lock, elem);
+
+      if (list_empty (&lock_tmp->semaphore.waiters) || lock_tmp->holder != thread_current ())
+        continue;
+
+      ASSERT (&lock_tmp->holder != NULL);
+
+      /*find most large priority in lock*/
+      waiting_thread = list_entry (list_max (&lock_tmp->semaphore.waiters, thread_order_by_priority, NULL), struct thread, elem);
+      
+      ASSERT (waiting_thread != thread_current ());
+
+      lock_max_priority = waiting_thread->priority > lock_max_priority ? 
+          waiting_thread->priority : lock_max_priority ;
+    }
+
+  ASSERT (lock_max_priority >= thread_current ()->original_priority);
+
+  thread_current ()->priority = lock_max_priority;
+}
+```
+`thread_restore_priority`는 holder로 가지고 있는 lock중에 가장 큰 priority나 original priority중 큰값으로 update하는 함수이다. 이를 위해서는 lock_release에서는 무조건 현재 lock을 먼저 list에서 빼줄 필요가 있다.
+
+그리고 생각 못한 케이스로 인해서 생각규모와 다르게 추가적인 수정이 들어간 함수가 있었다.
+
+```c
+void
+thread_set_priority (int new_priority) 
+{
+  thread_current ()->priority = new_priority;
+  thread_current ()->original_priority = new_priority;
+  /*  if thread is lock holder, 
+      priority is max of new priority or lock list waiters's priority  */
+  thread_restore_priority();
+
+  thread_yield();
+}
+```
+기존에는 `thread_set_priority`이 불렸을때 무조건 당장의 priority값을 바꾸고 끝냈지만 donation상태에서는 들어온 값이 donation된값보다 작은지를 따져봐야한다. 그리고 donation이 돌아갔을때 set된값으로 돌아가야한다. 이를위해서 `thread_restore_priority`을 다시 활용했다. `thread_yield`는 원래 특수한 조건에서만 작동하도록 제한해줄 수 있지만 코드 간략화를 위해 생략해주었다.
+
+
+
+```shell
+pass tests/threads/priority-change
+pass tests/threads/priority-donate-one
+pass tests/threads/priority-donate-multiple
+pass tests/threads/priority-donate-multiple2
+pass tests/threads/priority-donate-nest
+pass tests/threads/priority-donate-sema
+pass tests/threads/priority-donate-lower
+pass tests/threads/priority-fifo
+pass tests/threads/priority-preempt
+pass tests/threads/priority-sema
+pass tests/threads/priority-condvar
+pass tests/threads/priority-donate-chain
+```
+
+
+thread에서 너무 고생을 했기에 일단 스케줄링은 아예 넘어가고 file system을 시작하기로 했다
