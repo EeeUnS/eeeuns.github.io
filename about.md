@@ -5,8 +5,9 @@ permalink: /about/
 ---
 
 - email : euns312510@gmail.com
-- my github : [github](https://github.com/EeeUnS)
-- linked in : [linkedin](https://www.linkedin.com/in/%EC%9C%A4%EC%8A%B9-%EC%9D%B4-754389186/)
+- [github](https://github.com/EeeUnS)
+- [linkedin](https://www.linkedin.com/in/%EC%9C%A4%EC%8A%B9-%EC%9D%B4-754389186/)
+- [boj]()
 - Univ : PKNU(17~)
 - Skill : C,C++
 - etc : latex
@@ -15,3 +16,5 @@ permalink: /about/
   - [android-kernel-exploitation](https://github.com/cloudfuzz/android-kernel-exploitation/issues/4)
 - [CLRS blog](https://eeeuns.github.io/Introduction-To-Algorithms-Cpp-code/)
 <!-- [jekyll-organization]: https://github.com/jekyll -->
+- 외부 발표
+  - [github블로그와 레이텍](http://wiki.ktug.org/wiki/wiki.php/KTSConference/2020)
