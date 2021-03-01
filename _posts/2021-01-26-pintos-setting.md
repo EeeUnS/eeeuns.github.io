@@ -87,6 +87,23 @@ pintos 파일 561 줄쯤에 보면 `user_shortcut: keys=ctrlaltdel` 줄을   `ke
 일단 원래는 utils 폴더에서 make 를 하여 실행되는지 확인하여야하는데 일단 이부분은 make가 되지않았고 make를 하지않아도 일단은 진행되기에 그대로 진행할 예정.
 
 
+## 문제 6 utils 폴더 make error
+
+```
+Prototype mismatch: sub main::SIGVTALRM () vs none at /home/euns/pintos/utils/pintos line 934.
+```
+make 를 안한 문제였다.
+
+[참고](http://courses.mpi-sws.org/os-ss13/assignments/pintos/pintos_12.html)
+
+Compile the Pintos utilities by typing make in src/utils. Bochs needs squish-pty, VMware Player needs squish-unix. If they don't compile on your recent Linux distribution, comment out #include <stropts.h> in both squish-pty.c and squish-unix.c, and comment out lines 288-293 in squish-pty.c.
+
+
+make를 안한 문제 인 줄 알았다.
+
+Prototype mismatch: sub main::SIGVTALRM () vs none at /home/euns/pintos/utils/pintos line 934.
+Constant subroutine SIGVTALRM redefined at /home/euns/pintos/utils/pintos line 926.
+Cannot find kernel
 
 
 
@@ -95,8 +112,44 @@ pintos 파일 561 줄쯤에 보면 `user_shortcut: keys=ctrlaltdel` 줄을   `ke
 
 
 
+https://stackoverflow.com/questions/20822969/pintos-programming-project-2
 
 
 
 
 
+https://stackoverflow.com/questions/52472084/pintos-userprog-all-tests-fail-is-kernel-vaddr
+
+```
+pintos -f -q
+Prototype mismatch: sub main::SIGVTALRM () vs none at /home/euns/pintos/utils/pintos line 934.
+Constant subroutine SIGVTALRM redefined at /home/euns/pintos/utils/pintos line 926.
+squish-pty bochs -q
+00000000000i[      ] BXSHARE not set. using compile time default '/usr/local/share/bochs'
+00000000000i[      ] reading configuration from bochsrc.txt
+========================================================================
+                       Bochs x86 Emulator 2.6.11
+              Built from SVN snapshot on January 5, 2020
+                Timestamp: Sun Jan  5 08:36:00 CET 2020
+========================================================================
+00000000000i[      ] installing nogui module as the Bochs GUI
+00000000000i[      ] using log file bochsout.txt
+PiLo hda1
+Loading.........
+Kernel command line: -f -q
+Kernel PANIC at ../../threads/vaddr.h:84 in vtop(): assertion `is_kernel_vaddr (vaddr)' failed.
+Call stack: 0xc0028a4c 0xc002b2df 0xc002a960 0xc0020cdc 0xc00210e5 0xc0021172 0xc0022c8b 0xc0022f53 0xc002145d 0xc00217a2 0xc00205aa.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 0 ticks
+Thread: 0 idle ticks, 0 kernel ticks, 0 user ticks
+Console: 477 characters output
+Keyboard: 0 keys pressed
+Exception: 0 page faults
+Powering off...
+========================================================================
+Bochs is exiting with the following message:
+[UNMAP ] Shutdown port: shutdown requested
+========================================================================
+```
