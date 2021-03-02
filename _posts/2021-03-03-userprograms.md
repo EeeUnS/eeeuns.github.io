@@ -5,6 +5,8 @@ date: 2021-03-03 02:53:01 +0900
 tag: pintos
 ---
 
+[site](https://web.stanford.edu/class/cs140/projects/pintos/pintos_3.html#SEC32)
+
 # User Programs
 
 이제 Pintos와 협력하고 인프라 및 스레드 패키지에 익숙해지셨으므로 이제 user program을 실행할 수 있는 시스템 부분에 대한 작업을 시작해야 합니다. 기본 코드는 이미 user program 로드 및 실행을 지원하지만 I/O 또는 상호 작용은 불가능합니다. 이 프로젝트에서는 프로그램이 시스템 호출을 통해 OS와 상호 작용할 수 있도록 합니다.
