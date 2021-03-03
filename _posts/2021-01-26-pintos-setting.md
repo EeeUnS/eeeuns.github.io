@@ -61,6 +61,9 @@ https://sourceforge.net/projects/bochs/files/bochs/2.6.11/
 
 이제 아무데서 실행은 된다.
 
+-----
+추가 : 이게 프로젝트가 바뀌면 절대경로자체가 바뀜을 인지해야한다. 따라서 다음 해결법으로 고칠시에는 프로젝트가 바뀔때마다 경로 수정을 해주어야한다. 이런 에러가 안뜨려면 해당 kernel과 loader파일이있는 build폴더에서 make check, pintos 같은 명령어 실행을 하면 에러가 뜨지않는다.
+
 
 
 ## 문제 5 다시 bochs 문제
