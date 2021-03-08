@@ -74,7 +74,7 @@ user program이 파일 시스템에서 로드되고 많은 시스템 호출이 �
 - filesys_remove()에 대한 유닉스 계열 의미론이 구현된다. 즉, 파일을 제거할 때 파일이 열려 있으면 해당 블록의 할당이 취소되지 않으며 마지막으로 파일을 닫을 때까지 열린 스레드에서 액세스할 수 있습니다. 자세한 내용은 열린 파일 제거를 참조하십시오.
 
 
-파일 시스템 파티션으로 모의 실행 디스크를 만들 수 있어야 합니다. pintos-mkdisk 프로그램은 이 기능을 제공한다. 사용자 prog/build 디렉토리에서 pintos-mkdisk filesys.dsk --filesys-size=2를 실행합니다. 이 명령은 2MB Pintos 파일 시스템 파티션을 포함하는 filesys.dsk라는 모의 실행 디스크를 생성합니다. 그런 다음 커널의 명령줄에서 -f -q를 전달하여 파일 시스템 파티션을 포맷합니다: pintos -f -q. -f 옵션을 사용하면 파일 시스템이 포맷되고, -q 옵션을 사용하면 포맷이 완료되는 즉시 Pintos가 종료됩니다.
+파일 시스템 파티션으로 모의 실행 디스크를 만들 수 있어야 합니다. pintos-mkdisk 프로그램은 이 기능을 제공한다. 사용자 prog/build 디렉토리에서 `pintos-mkdisk filesys.dsk --filesys-size=2`를 실행합니다. 이 명령은 2MB Pintos 파일 시스템 파티션을 포함하는 filesys.dsk라는 모의 실행 디스크를 생성합니다. 그런 다음 커널의 명령줄에서 -f -q를 전달하여 파일 시스템 파티션을 포맷합니다: `pintos -f -q. -f` 옵션을 사용하면 파일 시스템이 포맷되고, -q 옵션을 사용하면 포맷이 완료되는 즉시 Pintos가 종료됩니다.
 
 시뮬레이션된 파일 시스템 안팎으로 파일을 복사하는 방법이 필요합니다. pintos -p("put") 및 -g ("get") 옵션이 이를 수행합니다. 파일을 Pintos 파일 시스템에 복사하려면 pintos -p 파일 -- -q 명령을 사용합니다. -p는 
 시뮬레이션된 커널이 아니라 pintos 스크립트용이기 때문에 --가 필요합니다. Pintos 파일 시스템에 새 이름으로 복사하려면 -new name: pintos -p file -new name -- -q를 추가합니다. VM에서 파일을 복사하는 명령은 비슷하지만 -g for -p를 대체합니다.
@@ -83,22 +83,22 @@ user program이 파일 시스템에서 로드되고 많은 시스템 호출이 �
 
 다음은 파일 시스템 파티션으로 디스크를 만들고, 파일 시스템을 포맷하고, 에코 프로그램을 새 디스크에 복사한 다음, 에코를 실행하여 인수 x를 전달하는 방법에 대한 요약입니다. (인수 전달은 구현하기 전에는 작동하지 않습니다.) 예제에서 이미 예를 작성했으며 현재 디렉터리는 사용자 prog/build라고 가정합니다.
 
+```
 pintos-mkdisk filesys.dsk --filesys-size=2
 pintos -f -q
 pintos -p ../../examples/echo -a echo -- -q
 pintos -q run 'echo x'
-
+```
 세 가지 최종 단계를 실제로 단일 명령으로 결합할 수 있습니다.
 
-
+```
 pintos-mkdisk filesys.dsk --filesys-size=2
 pintos -p ../../examples/echo -a echo -- -f -q run 'echo x'
-
+```
 
 나중에 사용하거나 검사할 수 있도록 파일 시스템 디스크를 보관하지 않으려면 네 단계를 모두 단일 명령으로 결합할 수도 있습니다. --filesys-size=n 옵션은 pintos 실행 기간 동안만 약 nMB 크기의 임시 파일 시스템 파티션을 생성합니다. Pintos 자동 테스트 제품군은 다음과 같은 구문을 광범위하게 사용합니다.
 
-
-pintos --filesys-size=2 -p ../../examples/echo -a echo -- -f -q run 'echo x'
+`pintos --filesys-size=2 -p ../../examples/echo -a echo -- -f -q run 'echo x'`
 
 rm 파일 커널 동작(예: pintos -q rm file)을 사용하여 Pintos 파일 시스템에서 파일을 삭제할 수 있습니다. 또한 ls는 파일 시스템의 파일을 나열하고 cat 파일은 파일의 내용을 디스플레이에 인쇄합니다.
 
