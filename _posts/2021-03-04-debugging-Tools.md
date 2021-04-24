@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "E Debugging Tools 번역"
-date: 2021-03-03 02:53:01 +0900
+date: 2021-03-04 02:53:01 +0900
 tag: pintos
 ---
 
