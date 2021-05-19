@@ -2,7 +2,7 @@
 layout: post
 title:  "String Matching"
 date:   2020-06-03 19:26:01 +0900
-tag: algorithm
+tag: CLRS
 ---
 
 - The naive string-matching algorithm

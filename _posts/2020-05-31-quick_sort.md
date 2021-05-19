@@ -2,7 +2,7 @@
 layout: post
 title:  "Introduction to Quick Sort"
 date:   2020-05-31 21:53:01 +0900
-tag:  math algorithm
+tag:  CLRS
 ---
 
 소개

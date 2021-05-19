@@ -2,7 +2,7 @@
 layout: post
 title:  "1 기초 number theory"
 date:   2020-02-02 00:53:01 +0900
-tag: math algorithm
+tag: CLRS
 ---
 
 - [기초정수론](https://eeeuns.github.io/2020/02/01/number-theory/)
