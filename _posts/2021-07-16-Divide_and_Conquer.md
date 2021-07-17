@@ -1,10 +1,13 @@
 ---
 layout: post
-title:  "분할정복(Divide and Conquer)"
+title:  "2. 분할정복(Divide and Conquer)"
 date: 2021-07-16 02:53:01 +0900
 tag: CLRS
 ---
 
+- [1. 알고리즘 기초 지식](https://eeeuns.github.io/2021/07/13/alg/)
+- [2. 분할정복(Divide and Conquer)](https://eeeuns.github.io/2021/07/15/divide-and-conquer/)
+- [3. 확률적 분석(Indicator random variables)](https://eeeuns.github.io/2021/07/15/indicator-random-variables/)
 
 문제를 세가지 단계를 거치면서 재귀적으로 문제를 푼다.
 
@@ -15,9 +18,9 @@ tag: CLRS
 분할정복 예시
 - 머지소트
 - 최대부분 배열문제를 해결하는 알고리즘
-- 퀵소트
+- [퀵소트](https://eeeuns.github.io/2020/05/31/quick-sort/)
 - 행렬 곱
-- FFT
+- [FFT](https://eeeuns.github.io/2020/05/31/fft/)
 - 카라추바 알고리즘
 
 
