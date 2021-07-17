@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "확률적 분석(Indicator random variables)"
-date: 2021-07-08 02:53:01 +0900
+date: 2021-07-16 02:53:01 +0900
 tag: CLRS
 ---
 

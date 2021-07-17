@@ -1,9 +1,10 @@
 ---
 layout: post
 title:  "분할정복(Divide and Conquer)"
-date: 2021-07-08 02:53:01 +0900
+date: 2021-07-16 02:53:01 +0900
 tag: CLRS
 ---
+
 
 문제를 세가지 단계를 거치면서 재귀적으로 문제를 푼다.
 
