@@ -8,9 +8,9 @@ tag: CLRS
 # 평균 수행시간
     
 - 입력 값의 분포에 대한 수행시간의 평균값.
-- $\Pr$ : 확률
+- $$\Pr$$ : 확률
 - x : 특정 입력값에 대해서 걸리는 수행시간
-- $\displaystyle E[X] = \sum_{x=1}^n x\Pr\{X=x\}$
+- $$\displaystyle E[X] = \sum_{x=1}^n x\Pr\{X=x\}$$
 
 
 
@@ -66,10 +66,10 @@ $$
 
 $$
 \begin{aligned}
-X_i = I \left\{ {지원자 $i$가 고용됨} \right\} =
+X_i = I \left\{ {지원자 i가 고용됨} \right\} =
     \begin{cases}
-        1 & 지원자 $i$ 고용 \\
-        0 & 지원자 $i$가 고용 안됨 
+        1 & 지원자 i 고용 \\
+        0 & 지원자 i가 고용 안됨 
     \end{cases}    
 \end{aligned}
 $$  

@@ -32,6 +32,7 @@ tag: CLRS
 푸는법 1. 주먹구구
 
 ## 분할정복을 이용한 방법
+
 - 인덱스 low... high 사이의 임의의 mid를 잡고 이 중 최대 부분 배열이 어디에 속하는지 생각해보자.  
 1. low ,mid 사이 
 2. mid high 사이 
@@ -80,17 +81,20 @@ tag: CLRS
             right-sum = sum
             max-right = j
     return (max-left, max-right, left-sum + right-sum)
-```    
+```
+
+참고로 DP방법을 이용해 더 빠르게 풀 수 있다.
 
 # 예시2. Merge Sort
-    \href{https://www.youtube.com/watch?v=2YvFRAC8UTM&list=PL52K_8WQO5oUuH06MLOrah4h05TZ4n38l&index=11&t=0s}{\textcolor{blue}{참고}}
     
-- $\Theta(n\lg n)$ 
-- 분할 : 정렬할 n개의 원소의 배열을 $n/2$개씩 부분 수열 두 개로 분할한다. 
+- $$\Theta(n\lg n)$$ 
+- 분할 : 정렬할 n개의 원소의 배열을 $$n/2$$개씩 부분 수열 두 개로 분할한다. 
 - 정복 : 두 부분 배열을 재귀적으로 정렬한다. 
 - 결합: 정렬된 두 개의 부분 배열을 병합해 정렬된 배열 하나로 만든다.
     
-![subarray해](/images/alg/merge.PNG)
+![mergesort](/images/alg/merge.PNG)
+
+작동 이미지
 
 ```c++
     MERGE-SORT(A, p, r)
@@ -100,7 +104,6 @@ tag: CLRS
             MERGE-SORT(A, q + 1, r)
             MERGE(A, p, q, r)
 ```    
-
 
 ```c++
     MERGE(A, p, q, r)
@@ -127,10 +130,10 @@ tag: CLRS
 
 # 점화식
 
-- 상수 $c$보다 작은 $n$에 대해 해를 직접 구하면 상수시간에 풀수있는경우. $\Theta(1)$
-- 주어진 문제를 문제의 $1/b$인 $a$개의 문제로 분할 하는경우 : $aT(n/b)$
-- 분할 : $D(n)$
-- 결합 : $C(n)$
+- 상수 $$c$$보다 작은 $$n$$에 대해 해를 직접 구하면 상수시간에 풀수있는경우. $$\Theta(1)$$
+- 주어진 문제를 문제의 $$1/b$$인 $$a$$개의 문제로 분할 하는경우 : $$aT(n/b)$$
+- 분할 : $$D(n)$$
+- 결합 : $$C(n)$$
 
 $$
     T(n) = 
@@ -144,9 +147,9 @@ $$
 
 ## 예시 : Merge sort 점화식
 
-- 분할 : $D(n) = \Theta(1)$ 
-- 정복 : $2T(n/2)$ 
-- 결합 : $C(n) = \Theta(n)$
+- 분할 : $$D(n) = \Theta(1)$$ 
+- 정복 : $$2T(n/2)$$ 
+- 결합 : $$C(n) = \Theta(n)$$
 
     $$
         T(n) = 
@@ -173,7 +176,8 @@ $$
 
 
 ### 예시
-    $$T(n) = 3T(n/4) + \Theta(n^2)$$
+ 
+$$T(n) = 3T(n/4) + \Theta(n^2)$$
     
 ![memrgetree](/images/alg/tree.PNG)
 
@@ -209,22 +213,25 @@ $$
 
 ## 예시 2.
 
-    $$T(n) = 2T(n/2) + 1$$
-- $$T(n) = O(n)$$이라고 추측
+$$T(n) = 2T(n/2) + 1$$
+
+$$T(n) = O(n)$$이라고 추측
+
 $$
     \begin{aligned}
         T(n) &\le 2c(n/2) +1 \\ 
         &= cn + 1
     \end{aligned}
 $$
-- $T(n) \le cn $ X 
-- $cn$보다 좀더 작은 값을 추측할것.
+
+- $$T(n) \le cn $$ X 
+- $$cn$$보다 좀더 작은 값을 추측할것.
 
 
 
 
     $$T(n) = 2T(n/2) + 1$$
-- $T(n) \le cn - d$이라고 추측
+- $$T(n) \le cn - d$$이라고 추측
 $$
     \begin{aligned}
         T(n) &\le 2c(n/2)-d +1 \\ 
@@ -236,44 +243,53 @@ $$
 
 
 # 마스터 정리
-    $a(\ge 1)$와 $b(> 1)$가 상수고 $f(n))$이 양의 함수라 하고, 음이 아닌 정수에 대해 $T(n)$이 다음 점화식에 의해 정의된다고 하자.
-    $$T(n) = aT(n/b) + f(n)$$
-    여기서 $n/b$는 $\lfloor n/b \rfloor \lceil n/b \rceil$를 뜻한다. 이때 $T(n)$의 점근적 한계는 다음과 같다.
+$$a(\ge 1)$$와 $$b(> 1)$$가 상수고 $$f(n))$$이 양의 함수라 하고, 음이 아닌 정수에 대해 $$T(n)$$이 다음 점화식에 의해 정의된다고 하자.
 
-- 상수 $\epsilon(>0)$에 대해 $f(n) = O(n^{\log_b a-\epsilon})$이면, $T(n) = \Theta(n^{\log_b a})$이다.
-- $f(n) = \Theta(n^{\log_b a})$이면, $T(n) = \Theta(n^{\log_b a} \lg n)$이다.
-- 상수 $c(<1)$와 충분히 큰 모든 $n$에 대해 $af(n/b) \le cf(n)$이면, $T(n) = \Theta(f(n))$이다.
+$$T(n) = aT(n/b) + f(n)$$
 
 
+여기서 $$n/b$$는 $$\lfloor n/b \rfloor \lceil n/b \rceil$$를 뜻한다. 이때 $$T(n)$$의 점근적 한계는 다음과 같다.
+
+1. 상수 $$\epsilon(>0)$$에 대해 $$f(n) = O(n^{\log_b a-\epsilon})$$이면, $$T(n) = \Theta(n^{\log_b a})$$이다.
+2. $$f(n) = \Theta(n^{\log_b a})$$이면, $$T(n) = \Theta(n^{\log_b a} \lg n)$$이다.
+3. 상수 $$c(<1)$$와 충분히 큰 모든 $$n$$에 대해 $$af(n/b) \le cf(n)$$이면, $$T(n) = \Theta(f(n))$$이다.
 
 
-## 예시
-    $T(n) = 9T(n/3) + n$ 
-- $a = 9$ 
-- $b = 3$ 
-- $f(n) = n = O(n ^{\log _3 9 - \epsilon})$ 
-- case 1 
-        $$\Theta(n^2)$$
-     $T(n) = T(2n/3) + 1$ 
-- $a = 1$ 
-- $b = 3/2$ 
-- $f(n) = 1 = \Theta(n ^{\log _{3/2}1}) = \Theta(1)$ 
-- case 2 
-        $$\Theta(\lg n)$$
 
 
-## 예시
-    $T(n) = 3T(n/4) + n\lg n$ 
-- $a = 3$ 
-- $b = 4$ 
-- $c = 3/4$일 때 $af(n/b) = 3(n/4) \lg(n/4) \le (3/4)n \lg n = cf(n)$ 
+## 예시 1
+
+$$T(n) = 9T(n/3) + n$$ 
+
+- $$a = 9$$ 
+- $$b = 3$$ 
+- $$f(n) = n = O(n ^{\log _3 9 - \epsilon})$$ 
+- case 1 : $$\Theta(n^2)$$ 
+  
+## 예시 2
+
+$$T(n) = T(2n/3) + 1$$ 
+
+- $$a = 1$$ 
+- $$b = 3/2$$ 
+- $$f(n) = 1 = \Theta(n ^{\log _{3/2}1}) = \Theta(1)$$ 
+- case 2 $$\Theta(\lg n)$$
+
+
+## 예시 3
+
+$$T(n) = 3T(n/4) + n\lg n$$ 
+
+- $$a = 3$$ 
+- $$b = 4$$ 
+- $$c = 3/4$$일 때 $$af(n/b) = 3(n/4) \lg(n/4) \le (3/4)n \lg n = cf(n)$$ 
 - case 3 
         $$\Theta(nlg n)$$
 
 
 ## 예시 : 스트라센 알고리즘
 
-    $$T(n) = 7T(n/2) + \Theta(n^2)$ $
+$$T(n) = 7T(n/2) + \Theta(n^2)$$ $$
 
 - $$a = 7$$ 
 - $$b = 2$$ 
@@ -283,7 +299,9 @@ $$
 
 
 ## 적용할 수 없는 점화식
-    $$T(n) = 2T(n/2) + n\lg n$$
+
+$$T(n) = 2T(n/2) + n\lg n$$
+
 - $$a = 2$$ 
 - $$b = 2$$ 
 - $$af(n/b) = 2(n/2) \lg(n/2) \le (3/4)n \lg n = cf(n)$$ 인 $$c$$를 잡을 수 없음.
