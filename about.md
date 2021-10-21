@@ -7,7 +7,7 @@ permalink: /about/
 - email : euns312510@gmail.com
 - [github](https://github.com/EeeUnS)
 - [linkedin](https://www.linkedin.com/in/%EC%9C%A4%EC%8A%B9-%EC%9D%B4-754389186/)
-- [boj](https://www.acmicpc.net/user/lys312510)
+- [boj](https://www.acmicpc.net/user/eeeuns)
 - Univ : PKNU(17~)
 - Skill : C,C++
 - etc : latex
