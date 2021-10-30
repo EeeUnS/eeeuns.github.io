@@ -4,8 +4,9 @@ layout: default
 
 <article class="post">
   <h1><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title | markdownify }}</a></h1>
+
   <div class="entry">
-    {{ content | reading_time_as_i }}
+    {{ content }}
   </div>
 
   <div class="date">
