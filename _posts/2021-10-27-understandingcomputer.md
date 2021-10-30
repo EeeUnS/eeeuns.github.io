@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "C언어가 cpu에서 작동하기까지"
+title:  "C언어가 cpu에 작동하기까지"
 date:   2021-10-27 19:26:01 +0900
 tag: etc
 ---
