@@ -17,7 +17,7 @@ tag: etc
 리눅스 gcc에서 컴파일 과정
 
 
-요약하면 C언어는 
+C언어의 컴파일 과정은 다음과 같다.
 
 1. 전처리를 거쳐서 매크로를 처리한다.
 2. 컴파일러를 통해서 어셈블리 언어로 변환한다.
@@ -26,14 +26,14 @@ tag: etc
 
 윈도우 환경이라면 여기서 최종 파일로 .exe 확장자가 붙은 파일이 있을 것이다.
 이것은 우리의 하드디스크나 ssd에 담겨져있는 단순한 파일이다.
-이것을 컴퓨터가 어떻게 실행하는지 보자.
+이것을 컴퓨터가 어떻게 실행하는지 알아보자.
 
 # 어셈블리어? 이진수?
 
 ![image](/images/understandingCpu/asm.jpg)
 
 
-어셈블리어는 CPU에게 내리는 명령어이다.
+컴파일 중간에 생성되는 어셈블리어는 CPU에게 내리는 명령어이다.
 
 이는 실제로 기계어와 1:1대응되는데, cpu의 종류마다 실제 명령어가 달라지고 거기에 대응하는 기계어도 달라진다.
 
@@ -57,7 +57,7 @@ tag: etc
 혹시 이렇게 생긴 메모리 구조에 대해서 본적이 있는가
 
 
-![image](/images/understandingCpu/virt 
+![image](/images/understandingCpu/virtual.png)
 <!--    가상메모리 사진                   -->
 
 Linux OS hosted on a 32-bit x86
@@ -132,6 +132,6 @@ OS는 프로세스를 실행할때마다 프로세스마다 논리적으로 이�
 - https://gabrieletolomei.wordpress.com/miscellanea/operating-systems/in-memory-layout/
 - https://mystyle1057.tistory.com/entry/C%EC%96%B8%EC%96%B4-%EA%B0%95%EC%A2%8C-%ED%8F%AC%EC%9D%B8%ED%84%B0%EB%B3%80%EC%88%98%EC%9D%98-%EA%B0%92%EA%B3%BC-%EC%A3%BC%EC%86%8C%ED%8F%AC%EC%9D%B8%ED%84%B0-%EA%B8%B0%EC%B4%88
 - http://blog.skby.net/%EA%B0%80%EC%83%81-%EB%A9%94%EB%AA%A8%EB%A6%AC-virtual-memory/
-
+- https://www.wbcsmadeeasy.in/loader-and-linker-computer-science-notes-for-w-b-c-s-examination/
 
 
