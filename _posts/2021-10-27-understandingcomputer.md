@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "C가 컴퓨터에서 작동하는 방식"
+title:  "C언어가 cpu에서 작동하기까지"
 date:   2021-10-27 19:26:01 +0900
 tag: etc
 ---
