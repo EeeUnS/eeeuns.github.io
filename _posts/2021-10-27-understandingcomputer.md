@@ -32,6 +32,10 @@ C언어의 컴파일 과정은 다음과 같다.
 
 ![image](/images/understandingCpu/asm.jpg)
 
+![image](/images/understandingCpu/ctoasem.png)
+
+C 언어를 어셈블리어로 나타낸 모습.
+
 
 컴파일 중간에 생성되는 어셈블리어는 CPU에게 내리는 명령어이다.
 
