@@ -132,7 +132,7 @@ OS는 프로세스를 실행할때마다 프로세스마다 논리적으로 이�
 
 
 사진 출처 : 
-- CS:APP
+- [CS:APP](https://csapp.cs.cmu.edu/){:target="_blank"}
 - https://gabrieletolomei.wordpress.com/miscellanea/operating-systems/in-memory-layout/
 - https://mystyle1057.tistory.com/entry/C%EC%96%B8%EC%96%B4-%EA%B0%95%EC%A2%8C-%ED%8F%AC%EC%9D%B8%ED%84%B0%EB%B3%80%EC%88%98%EC%9D%98-%EA%B0%92%EA%B3%BC-%EC%A3%BC%EC%86%8C%ED%8F%AC%EC%9D%B8%ED%84%B0-%EA%B8%B0%EC%B4%88
 - http://blog.skby.net/%EA%B0%80%EC%83%81-%EB%A9%94%EB%AA%A8%EB%A6%AC-virtual-memory/

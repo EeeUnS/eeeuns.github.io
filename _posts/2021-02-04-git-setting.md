@@ -70,3 +70,13 @@ https://coding-start.tistory.com/361
 
 - revert : 커밋을 되돌린 기록이 남음.
 - reset  : 기록이 남지않고 커밋만 남김. 만약 push를 이미 한 상태에서 commit 을 되돌릴경우에 원격 레포와 충돌이 일어남. 혼자사용하는 레포일경우에는 -f 옵션으로 push하면 해결.
+
+# branch 관련
+
+- git branch
+- git checkout
+- git rebase
+
+# 서브 모듈
+
+- git submodule add~
