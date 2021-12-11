@@ -5,6 +5,12 @@ date:   2020-05-31 21:53:01 +0900
 tag:  CLRS
 ---
 
+- [html page](/files/quick_sort.html) 
+
+- [텍 pdf](/files/quick_sort.pdf)
+
+
+<!-- 
 소개
 ====
 
@@ -756,4 +762,4 @@ Robert Sedgewick, Kevin Wayne Algorithms, 4th Edition, 2001 ISBN-13:
     Mathematics](https://arxiv.org/abs/1905.00118)
 
 [^7]: 원래 첫 제목은 All about Quicksort였으나 Quicksort에 대한 방대한
-    연구를 담아내기엔 상상이상으로 엄청난 논문이 줄을 이었다.
+    연구를 담아내기엔 상상이상으로 엄청난 논문이 줄을 이었다. -->
