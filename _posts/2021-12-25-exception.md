@@ -43,7 +43,7 @@ null이 들어오는것에 대해서는 다음과 같이 정리된다.
 - null이 들어오는 경우 매개변수명에 OrNull을 붙인다. 그럼 여기에 따른 적절한 처리를 한다.
 
 
-# 그래서 exception 프로그램을 부숴야하는가? 종료시켜야하는가?
+# 그래서 exception 어떻게 할까?
 
 
 <iframe width="846" height="480" src="https://www.youtube.com/embed/g7dzMgrWFic?list=PLW_uvsSPlijvMY-6Y-0I-bi4tlUFKEuFK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
