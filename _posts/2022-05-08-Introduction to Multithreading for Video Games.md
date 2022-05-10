@@ -2,7 +2,7 @@
 layout: post
 title: "Introduction to Multithreading for Video Games"
 date:   2022-05-09 19:26:01 +0900
-tag: arrangement
+tag: notes
 ---
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/M1e9nmmD3II" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
