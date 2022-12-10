@@ -10,7 +10,8 @@ permalink: /about/
 - [github](https://github.com/EeeUnS)
 - [linkedin](https://www.linkedin.com/in/%EC%9C%A4%EC%8A%B9-%EC%9D%B4-754389186/)
 - [boj](https://www.acmicpc.net/user/eeeuns)
-- Univ : PKNU(17~)
+- Univ : PKNU(17~23.8 예정)
+- 외부활동 : 42seoul (21.5~)
 - Skill : C,C++
 - etc : latex
 - open source contribute : 
