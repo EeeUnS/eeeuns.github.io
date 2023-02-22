@@ -1,11 +1,9 @@
 ---
 layout: post
-title: "malloc lab"
+title: "malloc lab 1. 개념정리"
 date:   2023-01-25 19:26:01 +0900
 tag: csapp
 ---
-
-malloc lab 개념정리
 
 [15-213: Introduction to Computer Systems / Schedule Fall 2015](http://www.cs.cmu.edu/afs/cs/academic/class/15213-f15/www/schedule.html)
 
