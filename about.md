@@ -21,3 +21,8 @@ permalink: /about/
 <!-- [jekyll-organization]: https://github.com/jekyll -->
 - 외부 발표
   - [github블로그와 레이텍](http://wiki.ktug.org/wiki/wiki.php/KTSConference/2020)
+- blog
+  - here
+  - https://42osstudy.github.io/os-study/
+  - https://eeeuns.github.io/Introduction-To-Algorithms-Cpp-code/
+  - https://eeeuns.github.io/others/
