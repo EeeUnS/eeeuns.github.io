@@ -20,7 +20,7 @@ C의 캐스팅 vs c++스타일의 캐스팅
       - 이진수 표기는 달라질 수 있음
 
 
-```
+```cpp
 int num = 3
 long long number = static_cast<long long>(number); // 값 유지
 
@@ -28,7 +28,7 @@ float num = 3.f;
 int number = static_cast<int>(num);
 ```
 
-```
+```cpp
 Animal* myPet = new Cat(2, "coco");
 
 Cat* myCat = static_cast<Cat*>(myPet); //OK
@@ -56,7 +56,7 @@ myDog->GetDogHouseName();
 - 형 변환 불가
 - const 또는 volatile 어트리뷰트를 제거할 때 사요ㅕㅇ
 
-```
+```cpp
 Animal* myPet = new Cat(2, "coco");
 const Animal* petPtr = myPet;
 
@@ -76,7 +76,7 @@ Cat* myCat2 = const_cast<Cat*>petPtr;
 - RTTI옵션을 켜야함
 
 
-```
+```cpp
 c style
 
 Animal *myPet = new Cat();
@@ -88,7 +88,7 @@ Dog* myDog = (Dog*)myPet;
 myDog->GetHouseName();
 ```
 
-```
+```cpp
 c++ style
 Animal *myPet = new Cat();
 
