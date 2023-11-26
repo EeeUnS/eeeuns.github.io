@@ -9,7 +9,7 @@ tag: c++
 
 # select 
 
-```sql
+```
 SELECT DEPTNAME, MGRNO        FROM CORPDATA.DEPARTMENT        WHERE DEPTNO = 'C01'
 ```
 
@@ -17,7 +17,7 @@ SELECT DEPTNAME, MGRNO        FROM CORPDATA.DEPARTMENT        WHERE DEPTNO = 'C0
 
 # insert 
 
-```sql
+```
 INSERT INTO table-name (column1, column2, ... ) VALUES (value-for-column1, value-for-column2, ... )
 
 INSERT INTO CORPDATA.EMPTIME (EMPNUMBER, PROJNUMBER, STARTDATE, ENDDATE) SELECT EMPNO, PROJNO, EMSTDATE, EMENDATE FROM CORPDATA.EMPPROJACT
@@ -26,13 +26,13 @@ INSERT INTO CORPDATA.EMPTIME (EMPNUMBER, PROJNUMBER, STARTDATE, ENDDATE) SELECT 
 
 # update
 
-```sql
+```
 UPDATE table-name SET column-1 = value-1, column-2 = value-2, ...  WHERE search-condition ...
 ```
 
 # delete
 
-```sql
+```
 DELETE FROM CORPDATA.EMPLOYEE WHERE WORKDEPT = 'D11'
 ```
 
