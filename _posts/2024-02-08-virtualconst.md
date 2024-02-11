@@ -2,7 +2,7 @@
 layout: post
 title:  "const 멤버함수로 변경시 조심점"
 date:   2024-02-08 19:26:01 +0900
-tag: 회고
+tag: cpp
 ---
 
 virtual 멤버함수에 함부로 const를 붙였다가 사고가 날 수도 있다.
