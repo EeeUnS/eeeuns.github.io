@@ -8,22 +8,20 @@ tag: cs
 page table 은 nonpaged pool인가 swap out되나라는 멍청한 의문에서 나온 TLB, Paging 정리
 책에서도 많이 다루는 TLB 작동방식을 통해 가상 메모리를 어떻게 물리 메모리로 바꾸는 과정들은 이미 많은 글들이 있다.
 
-# 가상 주소 물리주소 변환
+# 가상 주소 -> 물리주소 변환
 
 전제 : Physical Address Extension, PAE를 적용X
 
-x64 64비트 가상 메모리는 실제로 물리주소로 매핑할때 48byte만 사용한다.
+x64 64비트 가상 메모리는 실제로 물리주소로 매핑할때 48bit만 사용한다.
 
-현재 PML4 방식으로 사용하고 있다.
+64비트 운영체제에서 메모리 변환 방식은 PML4 방식으로 사용하고 있다.
 
-가상주소의 각각의 비트 영역을 쪼개서 각 테이블의 인덱스로 사용한다.
+**가상주소의 각각의 비트 영역을 쪼개서 각 테이블의 인덱스로 사용한다.**
 
 메모리 매핑은 다음 순서대로 이루어 진다.
 
-그리고 각각의 인덱스에 대응되는 Entry 에대해서 E를 붙인다
-
-1.  PML4 (Page Map Level 4)
-2. PDPT (Page Directory Pointer Table))
+1. PML4 (Page Map Level 4)
+2. PDPT (Page Directory Pointer Table)
 3. Page Directory
 4. Page Table
 5. Physical Memory
@@ -60,13 +58,17 @@ PDPT의 테이블이 작은 상태로(전체 크기가 32비트인 한계로 비
 
 ![Untitled](/images/tlbpaging/Untitled%202.png)
 
-물리메모리 index를 제외한 각각의 테이블 offset은 9비트인걸 알 수 있는데.
+물리메모리 index(12bit)를 제외한 각각의 테이블 offset은 9비트인걸 알 수 있는데.
 
-물리메모리 frame의 단위는 4kb다. → 따라서 mapping 하기위해 12비트가 필요하다.
+물리메모리 frame의 단위는 4KB(2^12)다. → 따라서 mapping 하기위해 12비트가 필요하다.
 
-**Entry의 크기는 8byte** (64비트)이다. 512개 만큼 (비트할당 9bit)씩하면 총 2^12크기로 4kb 가된다.
+**Entry의 크기는 8byte** (64bit, 2^3byte)이다. 512(2^9)개 만큼 씩하면 이 테이블 전체의 크기는 총 2^12로 4kb가된다.
 
-이러면 각각의 테이블을 하나의 page단위로 관리할 수 있으니 이런 이유로 9비트만큼 할당했지않나싶다.
+```cpp
+ULONGLONG PML4[512];
+```
+여기에 인덱스로 사용하기 위해서 2^9를 나타낼 수 있게 9bit만큼 할당이 된것.
+이러면 각각의 테이블을 하나의 page단위(4KB)로 관리할 수 있으니 이런 이유로 9비트만큼 할당했지않나싶다.
 
 PML5도 생기면 9bit만큼 먹겠지.
 
