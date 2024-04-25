@@ -65,7 +65,7 @@ PDPT의 테이블이 작은 상태로(전체 크기가 32비트인 한계로 비
 **Entry의 크기는 8byte** (64bit, 2^3byte)이다. 512(2^9)개 만큼 씩하면 이 테이블 전체의 크기는 총 2^12로 4kb가된다.
 
 ```cpp
-ULONGLONG PML4[512];
+ULONGLONG* PML4[512];
 ```
 여기에 인덱스로 사용하기 위해서 2^9를 나타낼 수 있게 9bit만큼 할당이 된것.
 이러면 각각의 테이블을 하나의 page단위(4KB)로 관리할 수 있으니 이런 이유로 9비트만큼 할당했지않나싶다.
@@ -80,15 +80,49 @@ page frame number database라는것도 있는데 잘 모르겠다;;
 
 대충 이렇게 Entry 구조가 짜여있다는데 별로 더 알고싶진않다.
 
-PML4는 512개의 PDPT 주소를 가지고 있고 PDPT는 512개의 Page Directory를 가르키고…이게 최종적으로 Physical Memory의 주소를 가르키는 방식이다.
+
+```cpp
+typedef pointer ULONGLONG
+
+ptr GetPhysicalAddress(ptr* virtualAddress)
+{
+	register ptr CR3;
+	ptr offset = 0b1'1111'1111; // 9bit on
+	ptr** pml4 = (ptr * *)(CR3 & ~(4096 - 1)); // pointer* PML4[512];  4096 2^12
+
+	ULONGLONG pysicalIndex = ((ptr)virtualAddress & (4096 - 1));
+	ULONGLONG PageIndex = ((ptr)virtualAddress & (offset << 12));
+	ULONGLONG PageDirectoryIndex = ((ptr)virtualAddress & (offset << 21));
+	ULONGLONG PDPTIndex = ((ptr)virtualAddress & (offset << 30));
+	ULONGLONG PML4Index = ((ptr)virtualAddress & (offset << 39));
+
+	ptr* PML4E = pml4[PML4Index];
+	ptr** PDPT = (ptr**)PML4E;
+		
+	ptr* PDPTE = PDPT[PDPTIndex];
+	ptr** PageDirectory = (ptr**)PDPTE;
+
+	ptr* PDE = PageDirectory[PageDirectoryIndex];
+	ptr** PageTable = (ptr**)PDE;
+
+	ptr* PTE = PageTable[PageIndex];
+	ptr* pysicalFrame = GetFrame(PTE);
+
+	return pysicalFrame[pysicalIndex];
+}
+```
+
+- PML4는 512개의 PDPT 주소를 가지고 있고 
+- PDPT는 512개의 Page Directory를 가르키고…
+- 이게 최종적으로 Physical Memory의 주소를 가르키는 방식이다.
 
 PML4를 제외한 나머지 테이블은 알아서 주소를 찾게되니 PML4테이블을 가르키는 주소만 추가적으로 가지고 있으면 된다.
 
-이 주소는 어떻게 관리할까
+이 주소는 어디서 알 수 있을까.
 
 각 프로세스마다 관리하는 KPROCESS structure에 이 테이블을 가르키는 물리 주소를 가지고있다.
 
-그리고 CR3레지스터는 현재 돌아가는 스레드의 테이블 주소를 들고있는다.
+그리고 CR3 레지스터가 현재 돌아가는 스레드의 테이블 주소를 들고있는다.
 
 # Control Register
 
