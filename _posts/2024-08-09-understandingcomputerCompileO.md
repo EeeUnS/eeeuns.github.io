@@ -13,8 +13,8 @@ tag: etc
 2. 실제 실행 과정
 
 링커글이 굉장히 괜찮은 글이 있어서 링크로만 달고 퉁치고 있다가,
-이번에 어떤 계기로 컴파일 과정을 쓰고 있었는데 
-내용이 너무 많아지고 컴파일 글을 다 완성하고 올리려니 언제 완성될지 감도 안잡히기에 짜를시점에 전반부를 올린다.. (그리고 남은 내용들이 C언어가 cpu에 작동하기까지라는 주제에 좀 벗어난 얘기들이다. 후반부라고 올릴지, 별개로 올릴진 일단 정리해봐야알것같다..)
+이번에 어떤 계기로 컴파일 과정을 쓰고 있다 내용이 너무 많아지고 컴파일 글을 다 완성하고 올리려니 언제 완성될지 감도 안잡히기에 짜를시점에 전반부를 올린다..(예전 퉁친 글은 날렸다)
+그리고 남은 내용들이 C언어가 cpu에 작동하기까지라는 주제에 좀 벗어난 얘기들이다. 후반부라고 올릴지, 별개로 올릴진 일단 정리해봐야알것같다..
 
 
 이번 내용은 대부분 CSAPP 링커 장에 해당하는 내용들이다.
@@ -265,11 +265,11 @@ DLL 을 처음에 생성시에 두가지 파일이 만들어진다 dll, lib 파�
 
 그러고 파일 실행시에  로더가 해당 DLL파일을 실제로 로드하면서 함수의 위치를 가르키게한다.
 
-dll 파일이 없으면 이런 에러가 뜰거다.
-
 ![Untitled](/images/understandingcomputerCompileO/Untitled%205.png)
+실행하자마자 dll 파일이 없으면 이런 에러가 뜰거다.
 
-1. **explicit run-time linking :** 소스파일에서 직접 DLL open(dlopen, LoadLibrary) 함수를 호출하여 DLL을 로딩하는 경우
+
+2. **explicit run-time linking :** 소스파일에서 직접 DLL open(dlopen, LoadLibrary) 함수를 호출하여 DLL을 로딩하는 경우
 
 ![Untitled](/images/understandingcomputerCompileO/Untitled%206.png)
 
