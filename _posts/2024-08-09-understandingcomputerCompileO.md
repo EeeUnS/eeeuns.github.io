@@ -318,6 +318,13 @@ func1 파일이 없어서 **당연히 링커에러가 발생**한다.
 
 그럼 obj파일은 생성 되어있으니 요 obj 파일을 한번 PEView 로 열어보자
 
+명심하자 파일은 결국 그냥 이진수 덩어리다. 
+PEView도 결국에 이진 명령어를 분석해봤으면 알겠지만 
+이진 덩어리를 규칙에따라 그냥 몇바이트 씩읽고 해석 해놓은 것에 불과하다.
+
+규칙만 있으면 우리도 PEView를 만들 수 있다
+
+
 **drectve :** 링커옵션이 들어있다 
 
 ![Untitled](/images/understandingcomputerCompileO/Untitled%207.png)
