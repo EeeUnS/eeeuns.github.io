@@ -9,6 +9,9 @@ tag: etc
 
 코드는 컴파일을 하면 실행파일이 되고 우리는 그 실행파일을 실행한다.
 
+- [심화 : 컴파일](https://eeeuns.github.io/2024/08/09/understandingcomputercompileo/)
+
+
 # C언어의 컴파일 과정
 
 
