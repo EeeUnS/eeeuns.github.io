@@ -28,7 +28,7 @@ tag: etc
 
 저 과정전체를 해주는 주체를 컴파일러라고 한다. (hello.c를 컴파일하여 hello를 뱉어주는 주체)
 
-현재 사용하는 컴파일러는 대표적으로 세 개 정도가 있다. 
+현재 많이 사용하는 컴파일러는 대표적으로 세 개 정도가 있다. 
 
 - MSVC (Microsoft Visual Complier) : windows Visual studio ide를 사용할때 주로 사용
 - Clang
@@ -38,7 +38,7 @@ tag: etc
 
 컴파일은 상황에따라서 넓거나 좁은 의미로 쓸 수 있는데 아래로 갈수록 좁은 의미이다.
 
-1. 코드를 컴파일하여 실행파일을 뱉는 전체 과정을 호칭한다.  위 이미지 전체 과정
+1. 코드를 컴파일하여 실행파일을 뱉는 전체 과정을 호칭한다. 위 이미지 전체 과정
 2. 맨 마지막 링커단계를 제외하고 구분하여 컴파일, 링커로 구분하여 호칭하기도한다.
 3. 더 세부적으로 매크로 작업이 끝난후 어셈파일로 뱉는 과정을 컴파일이라고도 한다.
 
@@ -53,27 +53,57 @@ tag: etc
 1. **매크로 명령어를 처리한다**
 2. 여기서 나온 결과물을 가지고 **실제로 컴파일하는 파일** 그 자체라고 생각하면 좋다. 진짜 전처리다.
 
+
 #define symbol 숫자 이런거는 실제 symbol은 숫자로 변경되서, 코드상의 정보로 남지않기에 디버깅시에 참고가 아예 안되는 문제가 있다.
 
 ifdef 로 걸러진 define이나 코드들은 실제로 **실행파일에 없는 코드**가 된다.
 
 매우 중요한 정보, 로직이라서 배포 실행파일에 들어가는것자체가 문제가 되는 케이스는 아예 해당 단계에서 제외를 시켜서, 아예 배포파일에서 제외를 시켜버릴 수 있다.
 
+
 **#include는 진짜로 복사 붙여넣기다.** 헤더는 관용상 붙지 .h란 확장자가 아니어도된다. 
 
-각 단계를 정확히 이해한다면 cpp를 include해도 잘 작동한다.
+각 단계를 정확히 이해한다면 cpp 파일을 include해도 잘 작동해야한다.
 
-50줄짜리 Cpp파일 하나를 컴파일한다고 생각해보자.
+작은 Cpp 프로젝트를 컴파일한다고 생각해보자.
 
-그런데 여기에 딸린 헤더파일이 2만 줄 정도 되면 실제로는 2만 50줄짜리 Cpp파일을 컴파일 하는거다
+
+![Untitled](/images/understandingcomputerCompileO/img1.png)
+![Untitled](/images/understandingcomputerCompileO/img2.png)
+![Untitled](/images/understandingcomputerCompileO/img3.png)
+
+
+세 cpp파일과 우측은 stdafx.h파일의 include 상태이다.
+
+실제 전처리를 통한 파일 크기는 아래와 같다.
+
+
+![Untitled](/images/understandingcomputerCompileO/img4.png)
+
+
+
+
+
+내가 작성을 30줄을 하더라도 여기에 include하는 헤더파일이 2만 줄 정도 되면 실제로는 2만 30줄짜리 Cpp파일을 컴파일 하는 상황이 된다.
+
+
+
+
 
 ## Compiler
 
-결과물을 실제로 어셈블리어로 변환하는 과정
+실제로 어셈블리어로 변환하는 과정
 
-해당 결과물이 우리가 마지막으로 그나마 읽을 수 있는 파일 중 가장 기계어에 가깝다.
+실행 코드를 어셈블리어로 변환하고, 심볼들에대해서 테이블을 만든다.
+
+결과물은 어셈블리어다.
+
+해당 결과물이 우리가 마지막으로 그나마 읽을 수 있는 파일 중 가장 기계어에 가깝다. 
 
 이 다음부터 결과물은 이진 파일이다.
+
+
+
 
 ## Assembler
 
@@ -120,64 +150,64 @@ object 파일은 크게 세가지 종류가 있다.
     
     뒤에서 더 자세하게 설명
     
-    # Object File 상세
+# Object File 상세
     
-    실제 PE File 공식 문서 : [https://learn.microsoft.com/ko-kr/windows/win32/debug/pe-format?redirectedfrom=MSDN](https://learn.microsoft.com/ko-kr/windows/win32/debug/pe-format?redirectedfrom=MSDN)
+실제 PE File 공식 문서 : [https://learn.microsoft.com/ko-kr/windows/win32/debug/pe-format?redirectedfrom=MSDN](https://learn.microsoft.com/ko-kr/windows/win32/debug/pe-format?redirectedfrom=MSDN)
+
+본 Windows 에서 실행파일은 이미지/PE(이식 가능한 실행 파일) 파일, 재배치 가능 목적파일은 개체 /COFF(공용 개체 파일 형식) 파일 이라고한다.
+
     
-    본 Windows 에서 실행파일은 이미지/PE(이식 가능한 실행 파일) 파일, 재배치 가능 목적파일은 개체 /COFF(공용 개체 파일 형식) 파일 이라고한다.
-    
-     
-    
-    상세하게는 명칭 등 차이가 있지만 전체적인 섹션 개요는 ELF와 비슷한 구조이다.
-    
-    ![Untitled](/images/understandingcomputerCompileO/Untitled%201.png)
-    
-    ELF 재배치 파일 구조
-    
-    ![Untitled](/images/understandingcomputerCompileO/Untitled%202.png)
-    
-    각 구역 별로 Section이 나뉜다. 
-    
-    목적파일 전체에서 가장 기본이 되는 네가지
-    
-    - .bss : 초기화되지 않은 전역변수와 정적변수
-    - .data : 초기화된 전역변수 및 정적 변수
-    - .rdata : 초기화된 읽기 전용 데이터 (스트링), 스위치 케이스 점프 테이블
-    - .text : 명령어 머신 코드
-    
-    프로세스 메모리 구조에서의 익숙한 요 내용에 해당 하는 section이다.
-    
-    ![Untitled](/images/understandingcomputerCompileO/Untitled%203.png)
-    
-    - .debug 섹션
-        - **디버그 디렉터리**
-        - **.debug$F(개체만 해당)**
-        - **.debug$S(개체만 해당)** 이 섹션에는 Visual C++ 디버그 정보(심볼 정보)가 포함
-        - **.debug$P(개체만 해당)** 이 섹션에는 Visual C++ 디버그 정보(미리 컴파일된 정보)가 포함. 개체를 사용하여 생성된 미리 컴파일된 헤더를 통해 컴파일된 모든 개체 간에 공유되는 형식
-        - **.debug$T(개체만 해당)** 이 섹션에는 Visual C++ 디버그 정보(형식 정보)가 포함
-    
-    ## **Microsoft 디버그 정보에 대한 링커 지원**
-    
-    디버그 정보를 지원하기 위해 링커에서 다음을 수행합니다.
-    
-    - **.debug$F**, **debug$S**, **.debug$P** 및 **.debug$T** 섹션에서 모든 관련 디버그 데이터를 수집합니다.
-    - 링커에서 생성한 디버깅 정보와 함께 해당 데이터를 PDB 파일로 처리하고, 이를 참조하는 디버그 디렉터리 항목을 만듭니다.
-    
-    - .**edata** : (이미지만 해당) : 내보내기 데이터 섹션.
-    다른 이미지에서 동적 링크를 통해 액세스할 수 있는 심볼에 대한 정보가 포함
-    - .reloc 섹션(이미지만 해당) : 이미지의 모든 베이스 재배치에 대한 항목이 포함
-    
-    - **.drectve**(개체만 해당) **:** IMAGE_SCN_LNK_INFO 세팅되어있어야함 ****링커 옵션
-    - **.idata** 섹션 : 심볼 가져오기 정보
-    - .pdata 섹션 :  예외 처리에 사용되는 함수 테이블 항목의 배열
-    - .tls 섹션 : 스레드 로컬 스토리지 테이블 주소 및 크기
-    - .rsrc 섹션 : 리소스 데이터 (GUI 프로그램에서 많이 볼 수 있는 섹션, 그래픽 정보 저장)
-    - .sxdata 섹션
-    - .cormeta 섹션(개체만 해당)
-    
-    또한 개체 파일은 각 섹션마다 **COFF 재배치(개체만 해당)**을 가지고 있다. 주소 지정이 필요한 심볼을나중에 해당 심볼의 주소를 써넣기 위한 주소를 기입하기 위한 offset을 기록하는 테이블이다. 
-    
-    그리고 제일 마지막에 COFF 심볼 테이블이 존재한다
+
+상세하게는 명칭 등 차이가 있지만 전체적인 섹션 개요는 ELF와 비슷한 구조이다.
+
+![Untitled](/images/understandingcomputerCompileO/Untitled%201.png)
+
+ELF 재배치 파일 구조
+
+![Untitled](/images/understandingcomputerCompileO/Untitled%202.png)
+
+각 구역 별로 Section이 나뉜다. 
+
+목적파일 전체에서 가장 기본이 되는 네가지
+
+- .bss : 초기화되지 않은 전역변수와 정적변수
+- .data : 초기화된 전역변수 및 정적 변수
+- .rdata : 초기화된 읽기 전용 데이터 (스트링), 스위치 케이스 점프 테이블
+- .text : 명령어 머신 코드
+
+프로세스 메모리 구조에서의 익숙한 요 내용에 해당 하는 section이다.
+
+![Untitled](/images/understandingcomputerCompileO/Untitled%203.png)
+
+- .debug 섹션
+    - **디버그 디렉터리**
+    - **.debug$F(개체만 해당)**
+    - **.debug$S(개체만 해당)** 이 섹션에는 Visual C++ 디버그 정보(심볼 정보)가 포함
+    - **.debug$P(개체만 해당)** 이 섹션에는 Visual C++ 디버그 정보(미리 컴파일된 정보)가 포함. 개체를 사용하여 생성된 미리 컴파일된 헤더를 통해 컴파일된 모든 개체 간에 공유되는 형식
+    - **.debug$T(개체만 해당)** 이 섹션에는 Visual C++ 디버그 정보(형식 정보)가 포함
+
+## **Microsoft 디버그 정보에 대한 링커 지원**
+
+디버그 정보를 지원하기 위해 링커에서 다음을 수행합니다.
+
+- **.debug$F**, **debug$S**, **.debug$P** 및 **.debug$T** 섹션에서 모든 관련 디버그 데이터를 수집합니다.
+- 링커에서 생성한 디버깅 정보와 함께 해당 데이터를 PDB 파일로 처리하고, 이를 참조하는 디버그 디렉터리 항목을 만듭니다.
+
+- .**edata** : (이미지만 해당) : 내보내기 데이터 섹션.
+다른 이미지에서 동적 링크를 통해 액세스할 수 있는 심볼에 대한 정보가 포함
+- .reloc 섹션(이미지만 해당) : 이미지의 모든 베이스 재배치에 대한 항목이 포함
+
+- **.drectve**(개체만 해당) **:** IMAGE_SCN_LNK_INFO 세팅되어있어야함 ****링커 옵션
+- **.idata** 섹션 : 심볼 가져오기 정보
+- .pdata 섹션 :  예외 처리에 사용되는 함수 테이블 항목의 배열
+- .tls 섹션 : 스레드 로컬 스토리지 테이블 주소 및 크기
+- .rsrc 섹션 : 리소스 데이터 (GUI 프로그램에서 많이 볼 수 있는 섹션, 그래픽 정보 저장)
+- .sxdata 섹션
+- .cormeta 섹션(개체만 해당)
+
+또한 개체 파일은 각 섹션마다 **COFF 재배치(개체만 해당)**을 가지고 있다. 주소 지정이 필요한 심볼을나중에 해당 심볼의 주소를 써넣기 위한 주소를 기입하기 위한 offset을 기록하는 테이블이다. 
+
+그리고 제일 마지막에 COFF 심볼 테이블이 존재한다
     
 
 # Linker
