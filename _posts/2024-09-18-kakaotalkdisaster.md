@@ -5,6 +5,8 @@ date:   2024-09-18 19:26:01 +0900
 tag: notes
 ---
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/U905BeDQ_BA?si=7q41Bl3I4pmG309J" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ![image.png](/images/kakaotalkdisaster/image.png)
 
 메시징 서버 종류
