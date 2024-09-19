@@ -40,3 +40,9 @@ ptr을 추가로 가지고 있음.
 전체 도식화
 
 ![Untitled](/images/shared_ptr/Untitled%207.png)
+
+
+
+같이 참고하면 좋은자료
+
+https://github.com/megayuchi/ppt/blob/main/docs/2018_1128_shared_ptr%2C%20weak_ptr%EC%9E%91%EB%8F%99%EB%B0%A9%EC%8B%9D%20%EB%82%B4%EB%B6%80.pdf
