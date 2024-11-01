@@ -8,23 +8,24 @@ tag: cpp
 
 windows os에서 64비트일때,
 
-스택 프레임은 16byte
-
-구조체는 default 8byte 정렬로 되어있다.
+- 스택 프레임은 16byte
+- 구조체는 default 8byte 정렬로 되어있다.
 
 32비트일때는
 
-스택은 4byte, 구조체도 4byte정렬이다.
+- 스택은 4byte
+- 구조체도 4byte정렬이다.
 
 [https://learn.microsoft.com/en-us/cpp/build/reference/zp-struct-member-alignment?view=msvc-170](https://learn.microsoft.com/en-us/cpp/build/reference/zp-struct-member-alignment?view=msvc-170)
 
 [https://learn.microsoft.com/en-us/cpp/build/stack-usage?view=msvc-170](https://learn.microsoft.com/en-us/cpp/build/stack-usage?view=msvc-170)
 
-현재의 캐시라인은 64byte정렬,
+그외의 정렬 관련한것은
 
-xmm register의 경우 16byte 정렬
+- **캐시라인은 64byte정렬**,
+- **xmm register의 경우 16byte 정렬**
 
-이것저것 정보를 찾아보다가.
+이정도가 정렬 관련한 스펙을 정리한 것 이다. 이것저것 정보를 찾아보다가.
 
 갑자기 의문점이 든 것이 있다.
 
@@ -35,6 +36,8 @@ xmm register의 경우 16byte 정렬
 위의 키워드들은 구조체들의 정렬을 맞추기위해 통상적으로 사용하는 키워드들이다.
 
 **그러면 구조체 정렬을 맞춰주면 정말로 해당 구조체에 접근하는 주솟값이 정렬됨이 보장이 되는가?**
+
+란 의문이 들었다.
 
 정답은 아니요다.
 
