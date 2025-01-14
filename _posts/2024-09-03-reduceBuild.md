@@ -1,11 +1,12 @@
 ---
 layout: post
-title:  "빌드 시간을 줄이기 위한 노력들 (작성중)"
+title:  "빌드 시간을 줄이기 위한 노력들"
 date:   2024-09-03 19:26:01 +0900
 tag: etc
 ---
 
-초기 계획했던 내용의 후반부 미완 너무 길게 묵히고있어서 일단 먼저 출고 
+[C언어가 cpu에 작동하기까지 심화 : 컴파일](https://eeeuns.github.io/2024/08/09/understandingcomputercompileo/) 곁다리로 기술하다 분리된 글
+
 
 
 ## 파일 수정 개별 빌드
@@ -40,14 +41,6 @@ tag: etc
 
 등 직접적으로 파악 할 수 있다.
 
-# DLL로 쪼개기
-
- 프로젝트간 중복 코드가 많을때 유용
-
-연관없는 영역간을 적당히 계층을 나누고 
-
-링킹 부하를 줄이고
-
 
 
 # 전방선언(**Forward declaration)**
@@ -67,29 +60,6 @@ tag: etc
 
 - [https://devblogs.microsoft.com/visualstudio/visual-studio-17-8-now-available/#clean-up-and-sort-include-directives](https://devblogs.microsoft.com/visualstudio/visual-studio-17-8-now-available/#clean-up-and-sort-include-directives)
 
-# 빌드 툴
-
-- ex) incredibuild
-
-![Untitled](/images/reducebuild/Untitled.png)
-
-가장 무식하고 강력한… 방법
-
-기본 아이디어는 다음과 같다.
-
-cpp 파일이 너무 많아서 컴파일이 오래걸리면 cpp 파일을 여러 컴퓨터에 나눠서 나눠서 컴파일하자!
-
-100개의 cpp 파일이 있고 컴퓨터의 cpu 코어가 20개라고하자 그러면 100개의 cpp파일을
-
-내컴퓨터, 4개의 컴퓨터에 20개씩 나눠서 컴파일한다음 합쳐서 최종적으로 내 컴퓨터에 모은다음 링킹을 하면 되겠구나라는 가장 간단한 생각에 나온 방식이다.
-
-여러 컴퓨터를 때려박아 하드웨어로 해결하는 방법
-
-하지만 컴파일을 위해서 각 파일을 여러 컴퓨터에 전송을 해야한다
-
-이로인해 코어가 모잘라 여러 파일이 한번에 컴파일 되지못하는 문제는 줄지만 trade off관계로 네트워크 지연 및 비용, 각 컴퓨터의 부하를 주게된다.
-
-이게 생각보다 단순 빌드보다 장점이 없을 수도있다
 
 # stdafx.h
 
@@ -111,30 +81,7 @@ stafx.h에 인클루트 한 파일을 여러번 빌드하지않으니 빌드시�
 
 단점은 **stdafx.h안에 include하는 파일이 수정될때 전체 빌드를 수행하게된다.**
 
-# 유니티 빌드
 
-중복을 없애기 위해 cpp 한 파일로 싸그리 모아서 요 파일 하나만 컴파일 하는 방법
-
-![Untitled](/images/reducebuild/Untitled%201.png)
-
-이러면 중복 라인에 대한 컴파일이 나올 수 없다
-
-모든 작업 파일을 단 하나의 cpp 파일로 모은 다음 
-
-**cpp 단 하나만 컴파일 하자**는게 본 취지.
-
-![Untitled](/images/reducebuild/Untitled%202.png)
-
-include는 앞서 말했지만 진짜 복사 붙여넣기다. cpp 파일을 최종적으로 빌드할 한 파일에 죄다 include하자.
-
-visual studio에도 해당 기능이 시험적으로 들어와있다.
-
-- [https://devblogs.microsoft.com/cppblog/support-for-unity-jumbo-files-in-visual-studio-2017-15-8-experimental/](https://devblogs.microsoft.com/cppblog/support-for-unity-jumbo-files-in-visual-studio-2017-15-8-experimental/)
-
-단점 : 
-
-1. 전역, static 함수 변수 define들이 마구마구 충돌이 날 가능성이 매우 높다.
-2. 파일 수정시 리빌드와 동일한 시간이 걸린다.
 
 # pimpl 패턴
 
@@ -188,6 +135,60 @@ private
 
 성능적으로도, 이래저래 편리성측면에서도 많이 불편해진다.
 
+# 유니티 빌드
+
+중복을 없애기 위해 cpp 한 파일로 싸그리 모아서 요 파일 하나만 컴파일 하는 방법
+
+![Untitled](/images/reducebuild/Untitled%201.png)
+
+이러면 중복 라인에 대한 컴파일이 나올 수 없다
+
+모든 작업 파일을 단 하나의 cpp 파일로 모은 다음 
+
+**cpp 단 하나만 컴파일 하자**는게 본 취지.
+
+![Untitled](/images/reducebuild/Untitled%202.png)
+
+include는 앞서 말했지만 진짜 복사 붙여넣기다. cpp 파일을 최종적으로 빌드할 한 파일에 죄다 include하자.
+
+visual studio에도 해당 기능이 시험적으로 들어와있다.
+
+- [https://devblogs.microsoft.com/cppblog/support-for-unity-jumbo-files-in-visual-studio-2017-15-8-experimental/](https://devblogs.microsoft.com/cppblog/support-for-unity-jumbo-files-in-visual-studio-2017-15-8-experimental/)
+
+단점 : 
+
+1. 전역, static 함수 변수 define들이 마구마구 충돌이 날 가능성이 매우 높다.
+2. 파일 수정시 리빌드와 동일한 시간이 걸린다.
+
+
+# 빌드 툴
+
+- ex) incredibuild
+
+![Untitled](/images/reducebuild/Untitled.png)
+
+가장 무식하고 강력한… 방법
+
+기본 아이디어는 다음과 같다.
+
+cpp 파일이 너무 많아서 컴파일이 오래걸리면 cpp 파일을 여러 컴퓨터에 나눠서 나눠서 컴파일하자!
+
+100개의 cpp 파일이 있고 컴퓨터의 cpu 코어가 20개라고하자 그러면 100개의 cpp파일을
+
+내컴퓨터, 4개의 컴퓨터에 20개씩 나눠서 컴파일한다음 합쳐서 최종적으로 내 컴퓨터에 모은다음 링킹을 하면 되겠구나라는 가장 간단한 생각에 나온 방식이다.
+
+여러 컴퓨터를 때려박아 하드웨어로 해결하는 방법
+
+하지만 컴파일을 위해서 각 파일을 여러 컴퓨터에 전송을 해야한다
+
+이로인해 코어가 모잘라 여러 파일이 한번에 컴파일 되지못하는 문제는 줄지만 trade off관계로 네트워크 지연 및 비용, 각 컴퓨터의 부하를 주게된다.
+
+이게 생각보다 단순 빌드보다 장점이 없을 수도있다
+
+
+
+
+
 # 모듈
 
 이런 고전적인 컴파일 시간의 문제를 해결하고자 모던한 언어에서는 module 시스템을 도입되어있다.
@@ -196,12 +197,6 @@ private
 
 Cpp도 모듈이 들어왔으나… 생각보다 널리 쓰이는것같지는 않다...
 
-
-Todo
-- DLL로 쪼개기, 내용 추가
-- 범위별 섹션 순서 정리 및 최종 작업 규모별 순서 섹션
-- pcd 빌드시 세부작동 파악
-- 모듈시스템의 빌드 중간과정 체크
 
 ---
 참고자료
