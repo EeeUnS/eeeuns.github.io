@@ -13,7 +13,10 @@ tag: cs
 
 웹 서버들 쪽 성능논하는 얘기를 보면 항상 구조 얘기만 있고, 서버 자체의 로직적인 퍼포먼스 얘기에 대해서는 크게 안보여서 아쉽다싶다.
 
-![image.png](image.png)
+![image.png](/images/optimizepoint/image.png)
+
+![image.png](/images/optimizepoint/image2.gif)
+
 
 1. 캐시 메모리
 2. 램
