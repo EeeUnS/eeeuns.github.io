@@ -27,4 +27,4 @@ permalink: /about/
   - [https://eeeuns.github.io/Introduction-To-Algorithms-Cpp-code/](https://eeeuns.github.io/Introduction-To-Algorithms-Cpp-code/)
   - [https://eeeuns.github.io/others/](https://eeeuns.github.io/others/)
   - [https://eeeuns.github.io/network/](https://eeeuns.github.io/network/)
-- [Portfolio](/files/portfolio.pdf)
+- [이력서 & 경력기술서](/files/이윤승_경력기술서.pdf)
