@@ -4,7 +4,8 @@ title: About
 permalink: /about/
 ---
 
-- 컴파일 시간 개선, 코드 최적화 , 디버깅하기 용이하고, 읽기 편한, 유지보수 가능한 코드를 짜는것에 관심이 있습니다.
+- 유지보수 가능한 코드를 짜는것에 관심이 있습니다.
+  - 관심 분야 : 컴파일 시간 개선, 코드 최적화 , 디버깅
 - email : euns312510@gmail.com
 - [github](https://github.com/EeeUnS)
 - [linkedin](https://www.linkedin.com/in/%EC%9C%A4%EC%8A%B9-%EC%9D%B4-754389186/)
@@ -26,4 +27,4 @@ permalink: /about/
   - [https://eeeuns.github.io/Introduction-To-Algorithms-Cpp-code/](https://eeeuns.github.io/Introduction-To-Algorithms-Cpp-code/)
   - [https://eeeuns.github.io/others/](https://eeeuns.github.io/others/)
   - [https://eeeuns.github.io/network/](https://eeeuns.github.io/network/)
-- [Portfolio](/files/portfolio.pdf)
+- [이력서 & 경력기술서](/files/이윤승_경력기술서.pdf)
