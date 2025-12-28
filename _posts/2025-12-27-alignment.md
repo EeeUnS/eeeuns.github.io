@@ -5,10 +5,6 @@ date:   2025-12-27 19:26:01 +0900
 tag: cpp
 ---
 
-기본적인 내용은 아래에 정리되어있다. 
-- [패딩과 정렬](https://eeeuns.github.io/2024/02/12/alignment/)
-
-
 기본적인 내용은 아래 글을 먼저 확인하세요.
 
 - [패딩과 정렬](https://eeeuns.github.io/2024/02/12/alignment/)
@@ -100,12 +96,9 @@ static_assert(sizeof(CCCC) == 64); // alignment: 32
 
 ## 참고 링크
 
-- https://velog.io/@jellypower/CMSVC%EC%9D%98-alignment-%EC%A7%80%EC%A0%95%EC%9E%90%EA%B0%84%EC%9D%98-%EC%B0%A8%EC%9D%B4
-- https://learn.microsoft.com/ko-kr/cpp/preprocessor/pack?view=msvc-170
-- https://learn.microsoft.com/ko-kr/cpp/build/x64-software-conventions?view=msvc-170#x64-structure-alignment-examples
-- https://learn.microsoft.com/ko-kr/cpp/cpp/alignas-specifier?view=msvc-170
-- http://post.procademy.co.kr/archives/865
+- [https://velog.io/@jellypower/CMSVC%EC%9D%98-alignment-%EC%A7%80%EC%A0%95%EC%9E%90%EA%B0%84%EC%9D%98-%EC%B0%A8%EC%9D%B4](https://velog.io/@jellypower/CMSVC%EC%9D%98-alignment-%EC%A7%80%EC%A0%95%EC%9E%90%EA%B0%84%EC%9D%98-%EC%B0%A8%EC%9D%B4)
+- [https://learn.microsoft.com/ko-kr/cpp/preprocessor/pack?view=msvc-170](https://learn.microsoft.com/ko-kr/cpp/preprocessor/pack?view=msvc-170)
+- [https://learn.microsoft.com/ko-kr/cpp/build/x64-software-conventions?view=msvc-170#x64-structure-alignment-examples](https://learn.microsoft.com/ko-kr/cpp/build/x64-software-conventions?view=msvc-170#x64-structure-alignment-examples)
 - [https://learn.microsoft.com/ko-kr/cpp/cpp/alignas-specifier?view=msvc-170](https://learn.microsoft.com/ko-kr/cpp/cpp/alignas-specifier?view=msvc-170)
 - [http://post.procademy.co.kr/archives/865](http://post.procademy.co.kr/archives/865)
-
 
