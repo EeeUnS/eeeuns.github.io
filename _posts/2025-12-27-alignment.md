@@ -92,7 +92,9 @@ static_assert(sizeof(CCCC) == 64); // alignment: 32
 
 앞서 쓴 글에서도 언급했듯, 정렬은 객체의 시작 주소에 따라 결정됩니다. 시작 주소 자체가 정렬되어 있지 않다면 `alignas`를 붙여도 실제 정렬이 보장되지 않을 수 있습니다.
 
-과거에는 스택에서 16바이트 이상의 정렬이 항상 보장되지 않던 시기가 있었고, VS2019에서 관련 동작이 수정된 적이 있습니다(관련 이슈: https://developercommunity.visualstudio.com/t/alignas-of-structured-bindings-c17-not-working/627792).
+과거에는 스택에서 16바이트 이상의 정렬이 항상 보장되지 않던 시기가 있었고, VS2019에서 관련 동작이 수정된 적이 있습니다
+
+[관련 이슈](https://developercommunity.visualstudio.com/t/alignas-of-structured-bindings-c17-not-working/627792)
 
 ## 참고 링크
 
