@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "shared_ptr"
+title:  "shared_ptr 구현 분석"
 date:   2024-03-24 19:26:01 +0900
 tag: stl
 ---
