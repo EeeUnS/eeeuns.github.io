@@ -2,7 +2,7 @@
 layout: post
 title:  "alignment 정리"
 date:   2025-12-27 19:26:01 +0900
-tag: cpp
+tag: cs
 ---
 
 기본적인 내용은 아래 글을 먼저 확인하세요.
