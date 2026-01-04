@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "object pool 만들기"
-date:   2025-01-04 19:26:01 +0900
+date:   2026-01-04 19:26:01 +0900
 tag: cpp
 ---
 
