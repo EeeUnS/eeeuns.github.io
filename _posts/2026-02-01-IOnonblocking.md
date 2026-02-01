@@ -1,4 +1,9 @@
-# IO (non)blocking / (a)sync 오개념 잡기
+---
+layout: post
+title: "IO (non)blocking / (a)sync 오개념 잡기"
+date: 2026-02-02 10:00:00 +0900
+tag: cs
+---
 
 unix쪽 전용 api를 제외하고는 모두 windows 기준으로 내용이 진행됩니다.
 
