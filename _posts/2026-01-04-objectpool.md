@@ -25,7 +25,7 @@ obejct pool을 직접 만들어보면서 발전 과정과 고려사항을 정리
 - pool에서 메모리가 부족할경우 추가되는 경우까지 고려.
 
 
-![object pool basic](/images/objectpool/1.png)
+![object pool basic](/images/ObjectPool/1.png)
 
 가장 기본적인건 단일 락으로 들고있는거다.
 **이렇게 했을때 경합이 클때 Lock 부하가 생긴다.**
@@ -168,7 +168,7 @@ Windows의 PrivateHeap을 사용해서 Heap할당시 메모리 할당을 하지�
 
 - 따라서 아래와 같은 구조가 된다.
 
-![object pool tls](/images/objectpool/2.png)
+![object pool tls](/images/ObjectPool/2.png)
 
 
 TLS 객체 풀을 위한 struct Segment를 추가로 만들었다.
@@ -220,11 +220,11 @@ static CObjectPool<FullSegment<T>> GLOBAL_FILLED_SEGMENT_POOL;
 Global pool에 바로 넣지않고 별도 로컬 Filled Segment, Empty Segment 포인터를 TLS에 추가로 들고있도록 하였다.
 Global pool에 넣는 케이스는 각 케이스가 두 번 생겼을때 하나를 집어넣도록 하였다.
 
-![object pool tls](/images/objectpool/4.png)
+![object pool tls](/images/ObjectPool/4.png)
 
 반환케이스 : Segment가 가득 찼을때
 
-![object pool tls](/images/objectpool/5.png)
+![object pool tls](/images/ObjectPool/5.png)
 
 요구케이스 : Segment가 비어서 필요할때
 
@@ -234,7 +234,7 @@ Global pool에 넣는 케이스는 각 케이스가 두 번 생겼을때 하나�
 Segment를 배열이아닌 리스트로 해도 가능은 하지않을까 싶다.
 2차 리스트구조로 가면 메모리 구조가 너무 복잡해져서 고려하진않았으나..
 
-![object pool tls](/images/objectpool/3.png)
+![object pool tls](/images/ObjectPool/3.png)
 
 
 vector 배열 메모리를 신경쓸필요가 없어지는것이 확실히 장점이 된다.
