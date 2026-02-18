@@ -202,3 +202,15 @@ tag: notes
 ![Untitled](/images/serveritai/Untitled%2061.png)
 
 ![Untitled](/images/serveritai/Untitled%2062.png)
+
+
+
+---
+
+추가로 같이 보면 좋은 자료
+
+- 넷마블 기술블로그 : 워라밸 브레이커, 메모리릭을 찾아라
+  - https://netmarble.engineering/break-the-memory-leak-1-4/
+  - https://netmarble.engineering/break-the-memory-leak-2-4/
+  - https://netmarble.engineering/break-the-memory-leak-3-4/
+  - https://netmarble.engineering/break-the-memory-leak-4-4/
