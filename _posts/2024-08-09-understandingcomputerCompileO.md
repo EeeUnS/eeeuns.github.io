@@ -5,7 +5,11 @@ date:   2024-08-09 19:26:01 +0900
 tag: etc
 ---
 
-- [기본글](https://eeeuns.github.io/2021/10/27/understandingcomputer/)
+
+- [C언어가 cpu에 작동하기까지](https://eeeuns.github.io/2021/10/27/understandingcomputer/)
+- [C언어가 cpu에 작동하기까지 심화 : 컴파일](https://eeeuns.github.io/2024/08/09/understandingcomputercompileo/)
+- [빌드 시간을 줄이기 위한 노력들](https://eeeuns.github.io/2024/09/03/reducebuild/)
+
 
 기본글을 쓰고 내가 아는 모든 걸 쓰겠다는 생각은 옛날부터 해왔다.
 가장 기본적인 구성을 이렇게 두가지로 하려고했는데..

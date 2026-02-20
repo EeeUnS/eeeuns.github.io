@@ -5,6 +5,11 @@ date:   2021-10-27 19:26:01 +0900
 tag: etc
 ---
 
+
+- [C언어가 cpu에 작동하기까지](https://eeeuns.github.io/2021/10/27/understandingcomputer/)
+- [C언어가 cpu에 작동하기까지 심화 : 컴파일](https://eeeuns.github.io/2024/08/09/understandingcomputercompileo/)
+- [빌드 시간을 줄이기 위한 노력들](https://eeeuns.github.io/2024/09/03/reducebuild/)
+
 대상 : C를 공부했지만 pointer에 대해서 이해가 잘 되지않아 문제를 겪고있고, 컴퓨터가 작동하는 방식을 좀 더 이해하기 위한 글.
 
 코드는 컴파일을 하면 실행파일이 되고 우리는 그 실행파일을 실행한다.
