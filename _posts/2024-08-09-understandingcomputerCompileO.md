@@ -8,7 +8,8 @@ tag: etc
 
 - [C언어가 cpu에 작동하기까지](https://eeeuns.github.io/2021/10/27/understandingcomputer/)
 - [C언어가 cpu에 작동하기까지 심화 : 컴파일](https://eeeuns.github.io/2024/08/09/understandingcomputercompileo/)
-- [빌드 시간을 줄이기 위한 노력들](https://eeeuns.github.io/2024/09/03/reducebuild/)
+  - [빌드 시간을 줄이기 위한 노력들](https://eeeuns.github.io/2024/09/03/reducebuild/)
+  - [전방선언 : 컴파일러가 필요한 정보](https://eeeuns.github.io/2025/11/24/forwarddeclaration/)
 
 
 기본글을 쓰고 내가 아는 모든 걸 쓰겠다는 생각은 옛날부터 해왔다.
