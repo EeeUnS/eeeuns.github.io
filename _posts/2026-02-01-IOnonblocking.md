@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "IO (non)blocking / (a)sync 오개념 잡기"
+title: "IO nonblocking / async 개념 잡기"
 date: 2026-02-02 10:00:00 +0900
 tag: cs
 ---
@@ -73,14 +73,16 @@ Async? Sync? NonBlocking? Blocking?
     1. timeout 세팅에따라 non-blocking도 가능하다;;
     2. [https://man7.org/linux/man-pages/man2/select.2.html](https://man7.org/linux/man-pages/man2/select.2.html)
     3. [https://man7.org/linux/man-pages/man2/select.2.html](https://man7.org/linux/man-pages/man2/select.2.html)
-2. aio 는 재밋게도 사장된 기술이다 ;;
-    1. epoll이 더 좋다고.. 
-    2. 실제로 대부분 현존하는 리눅스 서버 코어는 epoll로 되어있다
-    3. [https://jacking75.github.io/network_poxis_aio/](https://jacking75.github.io/network_poxis_aio/)
-    4. io_uring은 또 심각한 문제점이 있다고;;;;
-        1. [https://news.ycombinator.com/item?id=39416981](https://news.ycombinator.com/item?id=39416981)
+2. aio 는 재밋게도 사장된 기술이다;;
+    1. Linux aio에서는 socket 지원을 안하고, 성능자체도 epoll보다 떨어진다고 한다;;
+    2. 실제로 대부분 현존하는 리눅스 서버 코어는 epoll로 되어있다. 
+       1. 이는 아래 io_uring의 등장으로 대체 가능성이 보이나 경로의존성으로 생각한다
+    4. [https://jacking75.github.io/network_poxis_aio/](https://jacking75.github.io/network_poxis_aio/)
+ 3. io_uring은 또 심각한 문제점이 있다고
+     1. 구글에서 사용하지말라고 권고가 떨어졌다. 아마 kernel단 버전이 올라가면 문제가 없을것으로 보인다.
+     2. [https://news.ycombinator.com/item?id=39416981](https://news.ycombinator.com/item?id=39416981)
 
-**애초에 저런 4분면을 나눈것부터가 모든 문제의 시작이라고 봐야한다.**
+**저런 4분면을 나눈것이 모든 문제의 시작이라고 봐야한다.**
 
 io muiltiplexing과 read write는 애초에 같은 계층으로서 볼 수 없다
 
