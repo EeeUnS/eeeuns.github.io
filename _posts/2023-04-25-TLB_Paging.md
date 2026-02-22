@@ -6,15 +6,18 @@ tag: cs
 ---
 
 page table 은 nonpaged pool인가 swap out되나라는 멍청한 의문에서 나온 TLB, Paging 정리
-책에서도 많이 다루는 TLB 작동방식을 통해 가상 메모리를 어떻게 물리 메모리로 바꾸는 과정들은 이미 많은 글들이 있다.
+
+책에서도 많이 다루는 TLB 작동방식을 통해 가상 메모리를 어떻게 물리 메모리로 바꾸는 과정들은 이미 많은 글들이 있으니 별도로 다루지 않는다.
+
+주로 intel, Windows Internals 관련 하여, 참고하였다.
 
 # 가상 주소 -> 물리주소 변환
 
-전제 : Physical Address Extension, PAE를 적용X
+전제 : Physical Address Extension, PAE(32비트 아키텍처에서 4GB이상 메모리를 사용할 수 있게 하는 기능)를 적용X
 
 x64 64비트 가상 메모리는 실제로 물리주소로 매핑할때 48bit만 사용한다.
 
-64비트 운영체제에서 메모리 변환 방식은 PML4 방식으로 사용하고 있다.
+64비트 운영체제에서 메모리 변환 방식은 현재 PML4 방식으로 사용하고 있다.
 
 **가상주소의 각각의 비트 영역을 쪼개서 각 테이블의 인덱스로 사용한다.**
 
@@ -26,17 +29,17 @@ x64 64비트 가상 메모리는 실제로 물리주소로 매핑할때 48bit만
 4. Page Table
 5. Physical Memory
 
-5를 제외한 나머지는 모두 프로세스 개별로 가지고 있다.
+**테이블은 모두 프로세스 개별**로 가지고 있다.
 
-그리고 각각의 인덱스에 대응되는 Entry 에대해서 E를 붙인다
+그리고 각각의 인덱스에 대응되는 Entry E를 붙인다
 
-1.  PML4 / PML4E
-2. PDPT / PDPTE(PDPE)
-3. Page Directory / PDE 
-4. Page Table  / PTE
+1. PML4 <> PML4E (9bit / (x32)2bit)
+2. PDPT <> PDPTE(PDPE) (9bit)
+3. Page Directory <> PDE (9bit)
+4. Page Table  <> PTE (12bit)
 5. Physical Memory
 
-보면 눈치 챌 수도있겠지만 table 부터 PML 1이라고 생각하면 순서대로 PML4가 되었다. (PDPT까지 붙였다 이제 더 이름 붙이기 애매했나보다.)
+보면 눈치 챌 수도있겠지만 table 부터 PML 1이라고 생각하면 순서대로 PML4가 되었다. (PDPT까지 이름을 따로 붙였다 이제 더 이름 붙이기 애매했나보다.)
 
 32bit 시절에 물리주소로 변환할땐  PML4 이 존재하지 않았다.
 
@@ -44,9 +47,8 @@ PDPT의 테이블이 작은 상태로(전체 크기가 32비트인 한계로 비
 
 ![Untitled](/images/tlbpaging/Untitled.png)
 
-혹시 사용하는 가상주소의 크기가 커진다면 다음 Table의 이름은 PML5가 되나?
-
-그렇다.
+> 혹시 사용하는 가상주소의 크기가 커진다면 다음 Table의 이름은 PML5가 되나?
+> 그렇다.
 
 다시 돌아와서
 
@@ -60,19 +62,20 @@ PDPT의 테이블이 작은 상태로(전체 크기가 32비트인 한계로 비
 
 물리메모리 index(12bit)를 제외한 각각의 테이블 offset은 9비트인걸 알 수 있는데.
 
-물리메모리 frame의 단위는 4KB(2^12)다. → 따라서 mapping 하기위해 12비트가 필요하다.
+마지막 물리메모리 frame의 단위는 4KB($$2^{12}$$)다. → 따라서 Page Table에서 실제 mapping 하기위해 12비트가 필요하다.
 
-**Entry의 크기는 8byte** (64bit, 2^3byte)이다. 512(2^9)개 만큼 씩하면 이 테이블 전체의 크기는 총 2^12로 4kb가된다.
+**Entry의 크기는 8byte** (64bit, $$2^3$$byte)이다. 사실상 포인터 타입이고 이게 512($$2^9$$)개 씩 가지고 있는거니 이 테이블 전체의 크기는 총 $$2^{12}$$로 4KB가된다.
 
 ```cpp
 ULONGLONG* PML4[512];
 ```
-여기에 인덱스로 사용하기 위해서 2^9를 나타낼 수 있게 9bit만큼 할당이 된것.
+
+여기에 인덱스로 사용하기 위해서 $$2^9$$를 나타낼 수 있게 9bit만큼 할당이 된것.
 이러면 각각의 테이블을 하나의 page단위(4KB)로 관리할 수 있으니 이런 이유로 9비트만큼 할당했지않나싶다.
 
 PML5도 생기면 9bit만큼 먹겠지.
 
-각 Entry는 **다음 table의 물리 주소(Page Frame Number / PFN)**를 가르킨다.
+각 Entry는 **다음 table의 물리 주소(Page Frame Number / PFN)** 를 가르킨다.
 
 page frame number database라는것도 있는데 잘 모르겠다;;
 
@@ -182,13 +185,13 @@ TLB 에서 미스가 나면 page table을 자동으로 탐색한다.
 
 라고만 되어있겠지만 이 탐색 과정을 좀 더 자세히 살펴보자.
 
-# switcing 시의 TLB
+# context switching 시 TLB
 
-context switching할때 TLB는 어떻게 처리해야하는가?
+context switching 할 때 TLB는 어떻게 처리해야하는가?
 
 TLB를 냅둔다면 같은 가상 주소공간을 접근한다면 다른 프로세스의 물리메모리를 접근할거다.
 
-첫번째로 할 수 있는건 TLB flush 하는거다 valid 를 0으로 민다.
+첫번째로 할 수 있는건, TLB flush 하는거다 valid 를 0으로 민다.
 
 너무 비효율적이다.
 
@@ -264,7 +267,7 @@ User PCID, which automatically invalidates all the stale kernel TLB entries.
 
 ![Untitled](/images/tlbpaging/Untitled%2010.png)
 
-KVA shadowing 은 멜트다운 스펙터를 쳐맞은 윈도우즈가 낸 보완책이다. KPTI의 윈도우판이라고 보면된다.
+KVA shadowing 은 멜트다운 스펙터를 쳐맞은 윈도우즈가 낸 보완책이다. KPTI(Kernel Page-Table Isolation)의 윈도우판이라고 보면된다.
 
 # page table 은 swap out되는가?
 
