@@ -70,6 +70,10 @@ std::shared_ptr<int> ptr1 = std::shared_ptr<int>(new int(42));
 
 - _Rep 객체 타입 _Ref_count, 위 사진과 같은 케이스로 new 두번 발생.
 
+
+![Untitled](/images/shared_ptr/image2.png)
+
+
 ```c++
 std::shared_ptr<int> ptr2 = std::make_shared<int>(42);
 ```
