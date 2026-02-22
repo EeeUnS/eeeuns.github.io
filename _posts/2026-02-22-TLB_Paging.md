@@ -186,9 +186,11 @@ CR3를 포함한 전체 Entry 구조
    1. 캐시 메모리에 캐싱한다.
 
 
-만약? 
+만약?
+
 - swap out되어 보조기억장치에 저장되어있다면?
-- page fault가 발생한다면? Page Table단에서 valid bit로 관리한다.
+- page fault가 발생한다면? 
+-> Page Table단에서 valid bit로 관리한다.
 
 
 **Paging 방식으로 다른 프로세스간 같은 가상 주소를 어떻게 다른 물리메모리로 매핑하는가???**
@@ -275,12 +277,12 @@ nonpaged pool인가? nonpage pool이다.
 
 
 ---
+- [임베디드 레시피](http://recipes.egloos.com/5232056)
 - [https://en.wikipedia.org/wiki/Control_register](https://en.wikipedia.org/wiki/Control_register)
 - [https://42osstudy.github.io/os-study/jekyll/2022-08-05-ch21.html](https://42osstudy.github.io/os-study/jekyll/2022-08-05-ch21.html)
 - operating system concepts 10th
 - [https://en.wikipedia.org/wiki/Translation_lookaside_buffer](https://en.wikipedia.org/wiki/Translation_lookaside_buffer)
 - [https://shhoya.github.io/hv_paging.html#--4-level-paging-and-5-level-paging](https://shhoya.github.io/hv_paging.html#--4-level-paging-and-5-level-paging)
-- [http://recipes.egloos.com/5232056](http://recipes.egloos.com/5232056)
 - [https://techcommunity.microsoft.com/t5/windows-blog-archive/pushing-the-limits-of-indows-paged-and-nonpaged-pool/ba-p/723789](https://techcommunity.microsoft.com/t5/windows-blog-archive/pushing-the-limits-of-windows-paged-and-nonpaged-pool/ba-p/723789)
 - [https://connormcgarr.github.io/paging/](https://connormcgarr.github.io/paging/)
 - [https://en.wikipedia.org/wiki/Intel_5-level_paging](https://en.wikipedia.org/wiki/Intel_5-level_paging)
