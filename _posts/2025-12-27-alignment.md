@@ -73,7 +73,7 @@ static_assert(alignof(CCC) == 32);
 struct alignas(1) CC { char c; int i; };
 ```
 
-`int` 때문에 원래 4byte 정렬이 필요한데 1byte를 요구하고 있다. **alignas로 타입에 필요한 정렬보다 약한 정렬을 지정할 수는 없다.** [C++ 표준](https://eel.is/c++draft/dcl.align)에서는 잘못된 프로그램으로 다루고, [MSVC 문서](https://learn.microsoft.com/ko-kr/cpp/cpp/alignas-specifier?view=msvc-170)에도 같은 제한이 있다. MSVC에서 C4359 진단과 함께 무시되는 경우를 봤다고 해서 정렬을 낮추는 방법으로 쓰면 안 된다.
+`int` 때문에 원래 4byte 정렬이 필요한데 1byte를 요구하고 있다. **alignas로 타입에 필요한 정렬보다 약한 정렬을 지정할 수는 없다.** [cppreference의 alignas 설명](https://en.cppreference.com/w/cpp/language/alignas.html)에서도 이 경우를 잘못된 프로그램으로 설명하고, [MSVC 문서](https://learn.microsoft.com/ko-kr/cpp/cpp/alignas-specifier?view=msvc-170)에도 같은 제한이 있다. MSVC에서 C4359 진단과 함께 무시되는 경우를 봤다고 해서 정렬을 낮추는 방법으로 쓰면 안 된다.
 
 ## MSVC의 __declspec(align())
 
